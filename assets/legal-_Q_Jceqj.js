@@ -1,0 +1,1 @@
+import"./styles-Cz0jNFxb.js";var e=document.querySelector(`[data-nav]`),t=()=>e?.classList.toggle(`solid`,scrollY>24);addEventListener(`scroll`,t,{passive:!0}),t();

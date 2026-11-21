@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>clipper: sua live vira clipe enquanto acontece</title>
+    <meta
+      name="description"
+      content="O clipper acompanha lives da Twitch, da Kick e do YouTube, acha os melhores momentos, corta clipes verticais com legenda e posta no YouTube Shorts, no TikTok e no Instagram."
+    />
+    <meta name="theme-color" content="#000000" />
+    <meta property="og:title" content="clipper: sua live vira clipe enquanto acontece" />
+    <meta
+      property="og:description"
+      content="Ouve a live, lê o chat, corta no tempo certo, legenda e posta. Roda no seu PC."
+    />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='9' y='3' width='14' height='26' fill='%23f5f5f5'/%3E%3Crect x='11' y='19' width='10' height='3' fill='%23ffe500'/%3E%3C/svg%3E" />
+    <script type="module" crossorigin src="./assets/index-DwXHFEoE.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/styles-Cz0jNFxb.js">
+    <link rel="stylesheet" crossorigin href="./assets/styles-CLsWhO-r.css">
+  </head>
+  <body>
+    <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="nav" data-nav>
+      <a class="brand" href="./" aria-label="clipper, início">
+        <span class="mark" aria-hidden="true"><span></span></span>
+        clipper
+      </a>
+      <nav aria-label="Seções">
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#sinais">Como ele escolhe</a>
+        <a href="#perfis">Perfis</a>
+        <a href="#edicao">Edição</a>
+        <a href="#publicacao">Publicação</a>
+        <a href="#perguntas">Perguntas</a>
+      </nav>
+      <div class="nav-legal">
+        <a href="terms.html">Termos</a>
+        <a href="privacy.html">Privacidade</a>
+      </div>
+    </header>
+
+    <main id="conteudo">
+      <!-- ============================================================ hero -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <p class="hero-kicker"><span class="tally"></span> Para quem ganha por view com clipes de live</p>
+        <h1 id="hero-title" class="caption-line" data-karaoke>
+          <span>Sua</span> <span>live</span> <span>vira</span> <span>clipe</span> <span>enquanto</span>
+          <span>ela</span> <span>acontece</span>
+        </h1>
+        <p class="hero-sub">
+          O clipper assiste à live com você. Ele ouve as risadas, lê o chat, corta no começo da história e
+          depois da reação, legenda palavra por palavra e posta no YouTube, no TikTok e no Instagram.
+        </p>
+
+        <form class="composer" data-composer aria-label="Simular com um link">
+          <label class="sr-only" for="link">Link de uma live ou VOD</label>
+          <input
+            id="link"
+            name="link"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="Cole o link de uma live ou de um canal"
+          />
+          <button type="submit"><i data-icon="Play"></i> Ver o clipe sair</button>
+        </form>
+        <p class="composer-note">Uma simulação roda aqui no navegador. O clipper de verdade roda no seu PC.</p>
+
+        <!-- the stage: a stream, its signals, and the clip that comes out of it -->
+        <div class="stage" data-stage aria-label="Simulação: uma live vira um clipe" role="img">
+          <div class="stage-stream">
+            <div class="stream-frame">
+              <canvas data-stream width="960" height="540"></canvas>
+              <div class="onair"><span class="tally"></span> Ao vivo <span class="tnum" data-clock>2:14:08</span></div>
+              <ul class="chat" data-chat aria-hidden="true"></ul>
+              <div class="found" data-found hidden>
+                <strong>Momento encontrado</strong>
+                <span data-found-why>risada + chat pedindo clipe</span>
+              </div>
+            </div>
+            <div class="lanes" data-lanes>
+              <div class="lane" data-lane="chat"><span>Chat</span><canvas></canvas></div>
+              <div class="lane" data-lane="laugh"><span>Risada</span><canvas></canvas></div>
+              <div class="lane" data-lane="volume"><span>Volume</span><canvas></canvas></div>
+              <div class="lane" data-lane="speech"><span>Fala</span><canvas></canvas></div>
+              <div class="lane lane-score" data-lane="score"><span>Força</span><canvas></canvas></div>
+              <div class="playhead" data-playhead></div>
+              <div class="cut-range" data-cut hidden></div>
+            </div>
+          </div>
+          <div class="stage-phone">
+            <div class="phone" data-phone>
+              <canvas data-clip width="360" height="640"></canvas>
+              <p class="phone-hook" data-hook>ELE NÃO ESPERAVA ISSO</p>
+              <p class="phone-caption caption-line" data-caption></p>
+              <div class="phone-progress"><span data-progress></span></div>
+              <div class="phone-empty" data-empty>
+                <span class="tnum" data-wait>Procurando o momento</span>
+              </div>
+            </div>
+            <ol class="phone-steps" data-steps>
+              <li data-step="cut">Cortado: 34 s, começa na frase, termina depois da risada</li>
+              <li data-step="ok">Aprovado na revisão</li>
+              <li data-step="post">YouTube 19:00, TikTok em rascunho, Reels 21:30</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ sources -->
+      <section class="routes" aria-label="De onde vem e para onde vai">
+        <div class="route-col">
+          <p>Assiste</p>
+          <ul>
+            <li><i data-brand="siTwitch"></i>Twitch</li>
+            <li><i data-brand="siKick"></i>Kick</li>
+            <li><i data-brand="siYoutube"></i>YouTube</li>
+          </ul>
+        </div>
+        <div class="route-line" aria-hidden="true"><span></span></div>
+        <div class="route-col">
+          <p>Posta</p>
+          <ul>
+            <li><i data-brand="siYoutubeshorts"></i>Shorts</li>
+            <li><i data-brand="siTiktok"></i>TikTok</li>
+            <li><i data-brand="siInstagram"></i>Reels</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="figures" aria-label="Em números">
+        <div><b class="tnum">16</b><span>sinais lidos por segundo</span></div>
+        <div><b class="tnum">521</b><span>tipos de som reconhecidos no seu PC</span></div>
+        <div><b class="tnum">5 min</b><span>blocos da live, clipe minutos depois</span></div>
+        <div><b class="tnum">1080×1920</b><span>vertical, legenda queimada, -14 LUFS</span></div>
+      </section>
+
+      <!-- ============================================================ how it works -->
+      <section id="como-funciona" class="section steps" aria-labelledby="steps-title">
+        <h2 id="steps-title" class="section-title">Do link ao post, sem abrir um editor</h2>
+        <ol class="step-list">
+          <li>
+            <span class="step-n">1</span><i class="step-icon" data-icon="Link"></i>
+            <h3>Cole o link</h3>
+            <p>
+              Link de canal acompanha toda live daquele streamer, sozinho. Link de VOD processa o vídeo inteiro ou
+              só o trecho que você escolher.
+            </p>
+          </li>
+          <li>
+            <span class="step-n">2</span><i class="step-icon" data-icon="AudioLines"></i>
+            <h3>Ele assiste em blocos de 5 minutos</h3>
+            <p>
+              Cada bloco é baixado, transcrito e ouvido. O chat é lido junto. Os clipes aparecem enquanto a live
+              ainda está rolando.
+            </p>
+          </li>
+          <li>
+            <span class="step-n">3</span><i class="step-icon" data-icon="Scissors"></i>
+            <h3>Corta e edita</h3>
+            <p>
+              Vertical 1080×1920, legenda palavra por palavra, zoom na reação, silêncios cortados, capa escolhida e
+              a sua marca.
+            </p>
+          </li>
+          <li>
+            <span class="step-n">4</span><i class="step-icon" data-icon="Send"></i>
+            <h3>Você aprova, ele posta</h3>
+            <p>
+              Revise no PC ou no celular. Os aprovados saem nos melhores horários de cada canal, um a um, os mais
+              quentes primeiro.
+            </p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ============================================================ signals -->
+      <section id="sinais" class="section signals" aria-labelledby="signals-title" data-signals>
+        <div class="signals-pin">
+          <div class="signals-copy">
+            <h2 id="signals-title" class="section-title">Ele não procura barulho. Procura reação.</h2>
+            <p class="lead">
+              Volume alto sozinho engana: um tiro no jogo é alto e não é clipe. O clipper cruza dezesseis sinais
+              por segundo, cada um medido contra a própria live, e só chama de momento o que sobe junto.
+            </p>
+            <ul class="signal-keys" data-signal-keys>
+              <li data-key="chat">
+                <i data-icon="MessageSquare"></i><b>Chat</b> velocidade, explosão súbita e o que ele diz: rindo, em choque ou pedindo clipe.
+              </li>
+              <li data-key="laugh">
+                <i data-icon="Laugh"></i><b>Sons</b> risada, grito, comemoração e susto, reconhecidos entre 521 tipos de som, no seu PC.
+              </li>
+              <li data-key="volume"><i data-icon="Volume2"></i><b>Volume</b> e saltos de volume em relação aos últimos segundos.</li>
+              <li data-key="speech">
+                <i data-icon="Mic"></i><b>Fala</b> palavras de empolgação, risada na fala e começo de história ("e do nada…").
+              </li>
+              <li data-key="score">
+                <i data-icon="Gauge"></i><b>Força</b> a soma com pesos que aprendem com o que você aprova e rejeita.
+              </li>
+            </ul>
+          </div>
+          <div class="signals-board" aria-hidden="true">
+            <div class="board-lanes" data-board></div>
+            <div class="board-scan" data-board-scan></div>
+            <p class="board-readout tnum" data-readout>0:00</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ profiles -->
+      <section id="perfis" class="section profiles" aria-labelledby="profiles-title">
+        <div class="profiles-grid">
+          <div>
+            <h2 id="profiles-title" class="section-title">Cada live com a cara que você quiser</h2>
+            <p class="lead">
+              Perfis de edição guardam o visual inteiro: fonte, tamanho, cores e altura da legenda, o gancho, a marca do
+              seu canal, textos e logos no começo ou no fim, cortes de silêncio, zoom e loop. Um perfil é o padrão;
+              cada streamer, ou cada vídeo, pode usar outro, com o próprio nível de quantos clipes sair.
+            </p>
+            <div class="preset-tabs" role="tablist" aria-label="Exemplos de perfil" data-presets>
+              <button type="button" role="tab" aria-selected="true" data-preset="gameplay">Gameplay</button>
+              <button type="button" role="tab" aria-selected="false" data-preset="podcast">Papo e reação</button>
+              <button type="button" role="tab" aria-selected="false" data-preset="minimal">Limpo</button>
+              <button type="button" role="tab" aria-selected="false" data-preset="campaign">Campanha</button>
+            </div>
+            <ul class="profile-facts">
+              <li><i data-icon="Type"></i>6 fontes de legenda, 1 a 4 palavras por vez, caixa alta ou não</li>
+              <li><i data-icon="SlidersHorizontal"></i>Arraste legenda, gancho, marca e elementos na prévia</li>
+              <li><i data-icon="Image"></i>Seu logo em PNG, com opacidade, no clipe todo ou só no fim</li>
+              <li><i data-icon="Layers"></i>Por streamer ou por vídeo, com o nível de seleção junto</li>
+            </ul>
+          </div>
+          <div class="profile-demo" aria-hidden="true">
+            <div class="demo-phone" data-demo-phone>
+              <canvas width="360" height="640" data-demo-canvas></canvas>
+              <span class="demo-hook" data-demo-hook>NINGUÉM ESPERAVA</span>
+              <span class="demo-caption" data-demo-caption>ELE <b>CAIU</b> DE NOVO</span>
+              <span class="demo-tag" data-demo-tag>@seucanal</span>
+              <span class="demo-cta" data-demo-cta>PARTE 2 NO PERFIL</span>
+              <span class="demo-logo" data-demo-logo></span>
+            </div>
+            <dl class="demo-spec" data-demo-spec></dl>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ panel -->
+      <section class="section panel-show" aria-labelledby="panel-title">
+        <h2 id="panel-title" class="section-title">Revisa em segundos, no PC ou no celular</h2>
+        <p class="lead">
+          A fila mostra os clipes do mais quente para o menos quente. Aprove com uma tecla, ajuste o corte arrastando
+          as bordas na linha do tempo e veja a força de cada sinal no momento.
+        </p>
+        <div class="mock" aria-hidden="true" data-mock>
+          <div class="mock-side">
+            <span class="mock-logo"><span class="mark"><span></span></span> clipper</span>
+            <span class="mock-new">+ Novo vídeo ou live</span>
+            <span class="mock-nav on">Início</span>
+            <span class="mock-nav">Canais ao vivo <em>4</em></span>
+            <span class="mock-nav">Perfis de edição</span>
+            <span class="mock-group">Ao vivo agora</span>
+            <span class="mock-item"><i class="dot live"></i>streamer_a <em>12</em></span>
+            <span class="mock-group">Hoje</span>
+            <span class="mock-item">streamer_b <em>5</em></span>
+            <span class="mock-item">streamer_c</span>
+          </div>
+          <div class="mock-queue" data-mock-queue></div>
+          <div class="mock-main">
+            <div class="mock-player"><canvas width="270" height="480" data-mock-player></canvas></div>
+            <div class="mock-timeline" data-mock-timeline></div>
+          </div>
+          <div class="mock-details">
+            <span class="mock-label">Título do post</span>
+            <span class="mock-field">O chat não acreditou no GTA 6</span>
+            <span class="mock-label">Gancho na tela</span>
+            <span class="mock-field">Ninguém esperava</span>
+            <span class="mock-label">Postar</span>
+            <span class="mock-row"><i data-brand="siYoutube"></i> Amanhã 19:00 <em>agendado</em></span>
+            <span class="mock-row"><i data-brand="siTiktok"></i> Rascunho <em>na fila</em></span>
+            <span class="mock-row"><i data-brand="siInstagram"></i> Reels 21:30 <em>na fila</em></span>
+            <span class="mock-actions"><b>Aprovar</b><span>Rejeitar</span></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ editing -->
+      <section id="edicao" class="section edit" aria-labelledby="edit-title">
+        <h2 id="edit-title" class="section-title">Sai pronto para postar</h2>
+        <p class="lead">
+          O corte começa numa frase que abre o assunto e termina depois da reação, no fim da fala. Em cima disso, a
+          edição que todo short bom tem.
+        </p>
+        <div class="bento">
+          <article class="tile tile-caption">
+            <div class="tile-visual karaoke-demo" data-karaoke-demo aria-hidden="true">
+              <p class="caption-line"><span>Não</span> <span>acredito</span> <span>que</span> <span>ele</span> <span>fez</span> <span>isso</span></p>
+            </div>
+            <h3>Legenda no ritmo da fala</h3>
+            <p>
+              Transcrição com tempo de cada palavra e a palavra dita acesa em amarelo. A fonte, o contorno e o tamanho
+              são os que funcionam no celular.
+            </p>
+          </article>
+
+          <article class="tile tile-zoom">
+            <div class="tile-visual zoom-demo" aria-hidden="true">
+              <div class="zoom-frame"><canvas width="90" height="160" data-zoom-canvas></canvas></div>
+              <svg viewBox="0 0 200 40" class="zoom-wave"><path data-wave d="" /></svg>
+            </div>
+            <h3>Zoom na hora da risada</h3>
+            <p>O soco de zoom cai onde se ouve risada ou grito, não onde o jogo explode.</p>
+          </article>
+
+          <article class="tile tile-silence">
+            <div class="tile-visual silence-demo" aria-hidden="true">
+              <svg viewBox="0 0 300 60" data-silence></svg>
+            </div>
+            <h3>Silêncio cortado</h3>
+            <p>Pausas sem fala e sem som somem. Grito sem palavra é conteúdo e fica.</p>
+          </article>
+
+          <article class="tile tile-layouts">
+            <div class="tile-visual layouts-demo" aria-hidden="true">
+              <div class="mini-phone split"><i></i><b></b></div>
+              <div class="mini-phone blur"><b></b></div>
+              <div class="mini-phone crop"><b></b></div>
+            </div>
+            <h3>Câmera em cima, tela inteira ou recorte</h3>
+            <p>
+              Ele acha a webcam do streamer e escolhe o layout de cada clipe. O que você ajustar fica salvo para
+              aquele streamer.
+            </p>
+          </article>
+
+          <article class="tile tile-cover">
+            <div class="tile-visual cover-demo" aria-hidden="true" data-cover-demo>
+              <span></span><span></span><span class="best"></span><span></span><span></span>
+            </div>
+            <h3>Capa que para o scroll</h3>
+            <p>Dos quadros do clipe, fica o mais nítido, com o rosto em destaque, na hora da reação.</p>
+          </article>
+
+          <article class="tile tile-loop">
+            <div class="tile-visual loop-demo" aria-hidden="true"><svg viewBox="0 0 120 60"><path class="loop-base" d="M60 30 C 45 8, 12 8, 12 30 S 45 52, 60 30 S 108 8, 108 30 S 75 52, 60 30 Z"/><path class="loop-run" pathLength="100" d="M60 30 C 45 8, 12 8, 12 30 S 45 52, 60 30 S 108 8, 108 30 S 75 52, 60 30 Z"/></svg></div>
+            <h3>Final que emenda no começo</h3>
+            <p>O último quarto de segundo funde com o primeiro. O replay não pula, e replay conta como visualização.</p>
+          </article>
+
+          <article class="tile tile-brand">
+            <div class="tile-visual brand-demo" aria-hidden="true">
+              <div class="brand-phone"><span class="brand-tag">@seucanal</span></div>
+            </div>
+            <h3>A sua marca</h3>
+            <p>Etiqueta, moldura ou marca d'água com o seu nome, barra de progresso e crédito do streamer.</p>
+          </article>
+
+          <article class="tile tile-audio">
+            <div class="tile-visual audio-demo" aria-hidden="true">
+              <span class="lufs tnum">-14 LUFS</span>
+            </div>
+            <h3>Som de celular</h3>
+            <p>Corta o grave que embola, comprime para a voz ficar acima do jogo e nivela onde as redes tocam.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ============================================================ live -->
+      <section class="section live" aria-labelledby="live-title">
+        <h2 id="live-title" class="section-title">Clipe na mão enquanto a live rola</h2>
+        <p class="lead">
+          Quem posta primeiro leva a view. Cada bloco de 5 minutos vira clipe minutos depois do momento, e o
+          clipper espera a próxima live sozinho quando o streamer sai do ar.
+        </p>
+        <div class="live-track" aria-hidden="true" data-live-track>
+          <div class="live-blocks"></div>
+          <div class="live-clips"></div>
+        </div>
+        <ul class="facts">
+          <li><b>Twitch e Kick</b> seguem a VOD que cresce durante a live, com o chat da Twitch.</li>
+          <li><b>YouTube</b> é gravado direto a partir de quando você começa a acompanhar.</li>
+          <li><b>Sem VOD</b> o clipper grava a transmissão e tira os anúncios da Twitch.</li>
+        </ul>
+      </section>
+
+      <!-- ============================================================ publishing -->
+      <section id="publicacao" class="section publish" aria-labelledby="publish-title">
+        <h2 id="publish-title" class="section-title">Posta no horário que dá view</h2>
+        <div class="publish-grid">
+          <article class="pub pub-schedule">
+            <h3><i data-icon="CalendarClock"></i>Agenda por canal, com horários aprendidos</h3>
+            <p>
+              Conecte quantos canais do YouTube quiser. Cada streamer ou VOD pode ir para um canal, ou ele distribui
+              sozinho. Com 10 vídeos publicados, ele passa a usar as horas que mais deram views em 48 h.
+            </p>
+            <div class="schedule" aria-hidden="true" data-schedule></div>
+          </article>
+          <article class="pub pub-ab">
+            <h3><i data-icon="Repeat"></i>Teste A/B de título</h3>
+            <p>
+              O vídeo sai com um título e troca para o outro depois de 24 h. Em 48 h, fica o que puxou mais views
+              descontando a queda natural.
+            </p>
+            <div class="ab" aria-hidden="true">
+              <div class="ab-row"><span>Ele não esperava a polícia no GTA 6</span><i style="--w: 62%"></i></div>
+              <div class="ab-row win"><span>A polícia apareceu do nada no GTA 6</span><i style="--w: 88%"></i></div>
+            </div>
+          </article>
+          <article class="pub pub-social">
+            <h3><i data-icon="Send"></i>TikTok e Instagram</h3>
+            <p>
+              No TikTok o vídeo cai na caixa de entrada como rascunho, para você escolher um som em alta e postar. No
+              Instagram, sai como Reels.
+            </p>
+          </article>
+          <article class="pub pub-phone">
+            <h3><i data-icon="Smartphone"></i>Revisa no celular</h3>
+            <p>
+              Uma página no celular com os clipes por ordem de quão quentes estão: aprova, rejeita, baixa a capa e
+              compartilha direto no app.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ============================================================ learning -->
+      <section class="section learn" aria-labelledby="learn-title">
+        <h2 id="learn-title" class="section-title">Fica com o seu gosto</h2>
+        <div class="learn-grid">
+          <p class="lead">
+            Cada clipe aprovado ou rejeitado é um exemplo. O clipper ajusta o peso de cada sinal para o que você
+            aprova, e só passa a usar o ajuste quando ele acerta mais que o padrão. Os aprovados ganham uma nota de
+            quão quentes estão, comparada com o que já deu certo no seu canal, e a fila de posts segue essa ordem.
+          </p>
+          <div class="weights" aria-hidden="true" data-weights>
+            <div><span>Risada</span><i style="--a: 52%; --b: 70%"></i></div>
+            <div><span>Chat pedindo clipe</span><i style="--a: 40%; --b: 58%"></i></div>
+            <div><span>Grito</span><i style="--a: 46%; --b: 41%"></i></div>
+            <div><span>Explosão no jogo</span><i style="--a: 18%; --b: 6%"></i></div>
+            <div><span>História</span><i style="--a: 22%; --b: 35%"></i></div>
+            <div class="weights-legend"><span>peso padrão</span><span>depois das suas revisões</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ local -->
+      <section class="section local" aria-labelledby="local-title">
+        <h2 id="local-title" class="section-title">No seu PC, com as suas chaves</h2>
+        <div class="local-grid">
+          <div>
+            <h3><i data-icon="Lock"></i>Nada passa por um servidor nosso</h3>
+            <p>
+              Vídeos, clipes e as chaves das contas conectadas ficam numa pasta que só a sua conta do Windows lê. O
+              detector de sons e a transcrição rodam no seu processador.
+            </p>
+          </div>
+          <div>
+            <h3><i data-icon="Sparkles"></i>IA opcional, gasto sob controle</h3>
+            <p>
+              Sem IA, ele escolhe, corta e titula sozinho. Com a chave da Anthropic, a IA confere os momentos lendo só
+              a transcrição em volta deles. As tarefas simples vão para um modelo até 20 vezes mais barato, e o
+              painel mostra o gasto por tarefa.
+            </p>
+          </div>
+          <div>
+            <h3><i data-icon="Smartphone"></i>Celular de qualquer lugar</h3>
+            <p>
+              A página do celular abre pela rede de casa ou por um link temporário, protegida por um código que você
+              troca quando quiser.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ faq -->
+      <section id="perguntas" class="section faq" aria-labelledby="faq-title">
+        <h2 id="faq-title" class="section-title">Perguntas</h2>
+        <details>
+          <summary>Precisa deixar o PC ligado?</summary>
+          <p>
+            Sim, durante as lives que você quer acompanhar e nos horários de post do TikTok e do Instagram. O YouTube
+            recebe os vídeos agendados com um dia de antecedência, então ele publica mesmo com o PC desligado.
+          </p>
+        </details>
+        <details>
+          <summary>Posso clipar qualquer streamer?</summary>
+          <p>
+            Só quem autoriza: campanhas de clipping, criadores que liberam ou o seu próprio conteúdo. Siga as regras de
+            cada campanha, como crédito, duração e plataformas. O clipper põe o crédito do streamer no vídeo se você
+            pedir.
+          </p>
+        </details>
+        <details>
+          <summary>Funciona sem a IA paga?</summary>
+          <p>
+            Funciona. Os sinais (chat, sons, volume, fala) escolhem os momentos, o corte sai nas frases, e o título vem
+            da fala mais forte do clipe com o nome do jogo. A IA melhora os títulos e acha histórias contadas sem
+            barulho.
+          </p>
+        </details>
+        <details>
+          <summary>O que o clipper faz com a minha conta do TikTok?</summary>
+          <p>
+            Lê o perfil básico, para mostrar qual conta está conectada, e envia os clipes que você aprovou, com a
+            legenda que você escolheu. Você desconecta quando quiser. Os detalhes estão na
+            <a href="privacy.html">política de privacidade</a>.
+          </p>
+        </details>
+        <details>
+          <summary>Qual o tamanho e a duração dos clipes?</summary>
+          <p>
+            1080×1920, de 15 a 60 segundos, com a preferência entre 20 e 40, que é onde a maioria assiste até o fim.
+          </p>
+        </details>
+      </section>
+
+      <!-- ============================================================ end -->
+      <section class="closing" aria-labelledby="closing-title">
+        <h2 id="closing-title" class="caption-line" data-karaoke>
+          <span>A</span> <span>próxima</span> <span>live</span> <span>já</span> <span>tem</span> <span>clipe</span>
+        </h2>
+        <div class="closing-actions">
+          <a class="button" href="#conteudo" data-replay><i data-icon="Play"></i> Ver a simulação de novo</a>
+          <a class="button button-quiet" href="https://github.com/RafaelMonteiroDev/clipper-site/issues"
+            >Falar com a gente</a
+          >
+        </div>
+      </section>
+
+      <section class="english" lang="en" aria-labelledby="english-title">
+        <h2 id="english-title">In English</h2>
+        <p>
+          clipper is a personal tool that runs on the creator's own computer. It follows Twitch, Kick and YouTube
+          streams, finds the best moments by listening to the audio, reading chat and the transcript, and turns them
+          into captioned vertical clips (1080×1920). After the creator reviews and approves each clip, it can post
+          it to the creator's own YouTube, TikTok (as an inbox draft, through the Content Posting API, with the
+          account owner's authorization via Login Kit) and Instagram accounts. Only the basic TikTok profile is
+          read, to show which account is connected.
+          <a href="terms.html#en">Terms of Service</a> and <a href="privacy.html#en">Privacy Policy</a>.
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <a class="brand" href="./"><span class="mark" aria-hidden="true"><span></span></span> clipper</a>
+      <nav aria-label="Legal">
+        <a href="terms.html">Termos de uso / Terms of Service</a>
+        <a href="privacy.html">Política de privacidade / Privacy Policy</a>
+        <a href="https://github.com/RafaelMonteiroDev/clipper-site/issues">Contato</a>
+      </nav>
+      <p>Ferramenta pessoal. Não é afiliada à Twitch, à Kick, ao YouTube, ao TikTok nem ao Instagram.</p>
+    </footer>
+
+  </body>
+</html>
