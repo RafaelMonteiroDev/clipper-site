@@ -2,19 +2,20 @@
 @import '@fontsource/montserrat/800.css';
 @import '@fontsource/montserrat/900.css';
 
-/* An edit bay at night: graphite, broadcast tally lights, and the burned-in caption. */
+/* A black edit bay: true black, neutral greys for structure, square corners everywhere.
+   One accent, the caption yellow, for what is active; the tally colours only for status. */
 :root {
-  --bay: #14161b;
-  --deep: #0f1115;
-  --panel: #1d2027;
-  --raised: #262a33;
-  --line: #2f333d;
-  --ink: #eceef2;
-  --dim: #9aa1ad;
-  --faint: #6a7280;
+  --bay: #000000;
+  --deep: #000000;
+  --panel: #0b0b0b;
+  --raised: #151515;
+  --line: #242424;
+  --ink: #f5f5f5;
+  --dim: #a3a3a3;
+  --faint: #666666;
   --signal: #ffe500;
-  --air: #ff4d4d;
-  --go: #2fd46b;
+  --air: #ff5a4f;
+  --go: #34d27b;
   --sans: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif;
   --caption: 'Montserrat', 'Archivo Variable', sans-serif;
   --snap: cubic-bezier(0.2, 0.9, 0.25, 1);
@@ -27,6 +28,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  border-radius: 0 !important;
 }
 html {
   -webkit-text-size-adjust: 100%;
@@ -39,16 +41,6 @@ body {
   font: 400 17px/1.6 var(--sans);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
-}
-/* film grain over everything: an edit bay is never a flat colour */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 100;
-  opacity: 0.05;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 a {
   color: inherit;
@@ -144,7 +136,7 @@ p {
   border-bottom: 1px solid transparent;
 }
 .nav.solid {
-  background: rgb(20 22 27 / 0.82);
+  background: rgb(0 0 0 / 0.82);
   backdrop-filter: blur(14px) saturate(1.2);
   border-color: var(--line);
 }
@@ -305,9 +297,8 @@ p {
   margin: 56px auto 0;
   padding: 22px;
   border-radius: 22px;
-  background: linear-gradient(180deg, var(--panel), var(--deep));
+  background: var(--panel);
   border: 1px solid var(--line);
-  box-shadow: 0 60px 120px -50px rgb(0 0 0 / 0.9);
   text-align: left;
 }
 .stream-frame {
@@ -465,7 +456,7 @@ p {
   border-radius: 26px;
   overflow: hidden;
   background: #050608;
-  border: 6px solid #2a2e37;
+  border: 5px solid #1d1d1d;
   box-shadow:
     0 30px 60px -20px rgb(0 0 0 / 0.8),
     inset 0 0 0 1px rgb(255 255 255 / 0.05);
@@ -876,7 +867,7 @@ h3 {
   width: 78px;
   height: 120px;
   border-radius: 8px;
-  background: linear-gradient(180deg, #2b3140, #191c24);
+  background: linear-gradient(180deg, #262626, #121212);
   display: grid;
   place-items: center;
   overflow: hidden;
@@ -1039,7 +1030,7 @@ h3 {
   height: 138px;
   border-radius: 10px;
   border: 4px solid var(--ink);
-  background: linear-gradient(170deg, #2b3140, #14171e);
+  background: linear-gradient(170deg, #262626, #0e0e0e);
 }
 .brand-tag {
   position: absolute;
@@ -1626,4 +1617,531 @@ h3 {
   html {
     scroll-behavior: auto;
   }
+}
+
+/* ---------------------------------------------------------------- icons */
+
+.icon,
+.brand-mark {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+}
+.icon svg {
+  width: 1.1em;
+  height: 1.1em;
+}
+.brand-mark svg {
+  width: 1em;
+  height: 1em;
+}
+.composer button .icon,
+.button .icon {
+  margin-right: 6px;
+}
+.composer button,
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* hero: a faint frame grid, like a monitor's safe-area guides */
+.hero-grid {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 820px;
+  z-index: -1;
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 75%);
+}
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 auto 26px;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--dim);
+}
+
+/* platforms with their marks */
+.route-col li {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+.route-col li .brand-mark {
+  font-size: 0.8em;
+  color: var(--dim);
+}
+
+/* real numbers */
+.figures {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  max-width: var(--max);
+  margin: 8px auto 0;
+  padding: 0 var(--gutter);
+}
+.figures div {
+  display: grid;
+  gap: 4px;
+  padding: 26px 22px;
+  border: 1px solid var(--line);
+  margin-left: -1px;
+}
+.figures b {
+  font-size: clamp(28px, 3.4vw, 42px);
+  font-weight: 800;
+  font-stretch: 80%;
+  line-height: 1;
+  color: var(--ink);
+}
+.figures span {
+  color: var(--dim);
+  font-size: 14px;
+}
+
+.step-icon {
+  float: right;
+  font-size: 22px;
+  color: var(--signal);
+  margin-top: 6px;
+}
+.signal-keys li .icon {
+  margin-right: 8px;
+  color: var(--faint);
+  vertical-align: -3px;
+}
+.signal-keys li.on .icon {
+  color: var(--signal);
+}
+.pub h3,
+.local-grid h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.pub h3 .icon,
+.local-grid h3 .icon {
+  color: var(--signal);
+}
+
+/* ---------------------------------------------------------------- profiles */
+
+.profiles-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: center;
+}
+.preset-tabs {
+  display: inline-flex;
+  flex-wrap: wrap;
+  margin-top: 28px;
+  border: 1px solid var(--line);
+}
+.preset-tabs button {
+  border: 0;
+  background: transparent;
+  color: var(--dim);
+  font: 600 14px var(--sans);
+  padding: 10px 16px;
+  cursor: pointer;
+  transition:
+    background 150ms,
+    color 150ms;
+}
+.preset-tabs button:hover {
+  color: var(--ink);
+}
+.preset-tabs button[aria-selected='true'] {
+  background: var(--ink);
+  color: #000;
+}
+.profile-facts {
+  display: grid;
+  gap: 12px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--dim);
+  font-size: 15.5px;
+}
+.profile-facts li {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.profile-facts .icon {
+  color: var(--signal);
+}
+.profile-demo {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 24px;
+  align-items: center;
+  padding: 26px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+.demo-phone {
+  position: relative;
+  width: 250px;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  background: #000;
+  border: 5px solid #1d1d1d;
+}
+.demo-phone canvas {
+  width: 100%;
+  height: 100%;
+}
+.demo-phone > span {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  transition:
+    top 420ms var(--snap),
+    opacity 250ms,
+    color 250ms,
+    background 250ms,
+    font-size 250ms;
+}
+.demo-hook {
+  top: 12%;
+  padding: 4px 7px;
+  font: 800 13px var(--caption);
+}
+.demo-caption {
+  top: 33%;
+  font-weight: 900;
+  font-size: 22px;
+  paint-order: stroke fill;
+  -webkit-text-stroke: 5px #000;
+}
+.demo-tag {
+  top: 72%;
+  padding: 3px 7px;
+  font: 800 10px var(--caption);
+  color: #141414;
+}
+.demo-cta {
+  top: 84%;
+  padding: 5px 9px;
+  font: 900 11px var(--caption);
+}
+.demo-logo {
+  top: 3% !important;
+  left: auto !important;
+  right: 6%;
+  transform: none !important;
+  width: 34px;
+  height: 34px;
+  border: 2px solid currentColor;
+  display: grid;
+  place-items: center;
+}
+.demo-logo::after {
+  content: '';
+  width: 12px;
+  height: 18px;
+  background: currentColor;
+}
+.demo-spec {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  font-size: 14px;
+}
+.demo-spec div {
+  display: grid;
+  gap: 2px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+.demo-spec dt {
+  color: var(--faint);
+  font-size: 12px;
+}
+.demo-spec dd {
+  margin: 0;
+  color: var(--ink);
+}
+
+/* ---------------------------------------------------------------- panel mock */
+
+.mock {
+  display: grid;
+  grid-template-columns: 180px 220px minmax(0, 1fr) 240px;
+  height: 520px;
+  margin-top: 44px;
+  border: 1px solid var(--line);
+  background: #000;
+  font-size: 12px;
+  overflow: hidden;
+}
+.mock > div {
+  min-width: 0;
+  border-right: 1px solid var(--line);
+}
+.mock > div:last-child {
+  border-right: 0;
+}
+.mock-side {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 10px;
+  color: var(--dim);
+}
+.mock-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.mock-logo .mark {
+  transform: scale(0.7);
+}
+.mock-new {
+  background: var(--ink);
+  color: #000;
+  font-weight: 700;
+  padding: 8px 10px;
+  margin-bottom: 8px;
+}
+.mock-nav,
+.mock-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+}
+.mock-nav.on {
+  background: var(--raised);
+  color: var(--ink);
+}
+.mock-nav em,
+.mock-item em {
+  margin-left: auto;
+  font-style: normal;
+  background: var(--signal);
+  color: #000;
+  font-weight: 700;
+  padding: 0 5px;
+}
+.mock-group {
+  margin-top: 10px;
+  font-size: 11px;
+  color: var(--faint);
+}
+.dot {
+  width: 7px;
+  height: 7px;
+  background: var(--faint);
+}
+.dot.live {
+  background: var(--air);
+}
+.mock-queue {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 8px;
+  overflow: hidden;
+}
+.q {
+  display: grid;
+  grid-template-columns: 3px 30px 1fr;
+  gap: 8px;
+  align-items: center;
+  padding: 6px;
+}
+.q.on {
+  background: var(--raised);
+}
+.q i {
+  height: 44px;
+  background: var(--line);
+}
+.q.ok i {
+  background: var(--go);
+}
+.q img {
+  width: 30px;
+  height: 52px;
+  object-fit: cover;
+}
+.q b {
+  display: block;
+  font-size: 12px;
+  font-stretch: 80%;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.q span {
+  color: var(--faint);
+  font-size: 11px;
+}
+.q .heat {
+  color: var(--signal);
+}
+.mock-main {
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+.mock-player {
+  display: grid;
+  place-items: center;
+  padding: 14px;
+}
+.mock-player canvas {
+  height: 330px;
+  width: auto;
+  aspect-ratio: 9 / 16;
+}
+.mock-timeline {
+  position: relative;
+  height: 110px;
+  border-top: 1px solid var(--line);
+}
+.mock-timeline svg {
+  width: 100%;
+  height: 100%;
+}
+.mock-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 12px;
+}
+.mock-label {
+  color: var(--faint);
+  font-size: 11px;
+  margin-top: 6px;
+}
+.mock-field {
+  border: 1px solid var(--line);
+  padding: 8px;
+  color: var(--ink);
+  font-weight: 600;
+}
+.mock-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+}
+.mock-row em {
+  margin-left: auto;
+  font-style: normal;
+  color: var(--go);
+  font-size: 11px;
+}
+.mock-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: auto;
+}
+.mock-actions b,
+.mock-actions span {
+  display: grid;
+  place-items: center;
+  padding: 9px;
+  font-weight: 700;
+}
+.mock-actions b {
+  background: var(--go);
+  color: #000;
+}
+.mock-actions span {
+  border: 1px solid var(--line);
+  color: var(--dim);
+}
+
+@media (max-width: 980px) {
+  .figures {
+    grid-template-columns: 1fr 1fr;
+  }
+  .profiles-grid {
+    grid-template-columns: 1fr;
+  }
+  .mock {
+    grid-template-columns: 200px minmax(0, 1fr) 220px;
+  }
+  .mock-side {
+    display: none !important;
+  }
+}
+@media (max-width: 620px) {
+  .figures {
+    grid-template-columns: 1fr;
+  }
+  .profile-demo {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  .mock {
+    grid-template-columns: minmax(0, 1fr);
+    height: auto;
+  }
+  .mock-queue,
+  .mock-details {
+    display: none !important;
+  }
+  .mock-player canvas {
+    height: 300px;
+  }
+}
+
+/* loop tile: an infinity drawn over and over */
+.loop-demo svg {
+  width: 150px;
+  height: 75px;
+}
+.loop-demo path {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: square;
+}
+.loop-base {
+  stroke: var(--line);
+}
+.loop-run {
+  stroke: var(--signal);
+  stroke-dasharray: 22 78;
+  animation: loop-run 2.4s linear infinite;
+}
+@keyframes loop-run {
+  to {
+    stroke-dashoffset: -100;
+  }
+}
+.zoom-frame {
+  width: 72px !important;
+  height: 128px !important;
+  background: #000 !important;
+}
+.zoom-frame canvas {
+  width: 100%;
+  height: 100%;
+}
+.zoom-frame {
+  animation: none !important;
+}
+.zoom-frame canvas {
+  animation: punch 3.2s var(--snap) infinite;
 }

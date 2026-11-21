@@ -14,14 +14,20 @@ video wears. Nothing is decoration that the product doesn't also use.
 
 | Token | Hex | Role |
 |---|---|---|
-| bay | `#14161b` | page background (graphite, not black) |
-| panel | `#1d2027` | raised surfaces |
-| line | `#2f333d` | hairlines, lanes |
-| ink | `#eceef2` | text |
-| dim | `#9aa1ad` | secondary text |
-| signal | `#ffe500` | **only** the active caption word and signal data |
-| air | `#ff4d4d` | live / on air |
-| go | `#2fd46b` | approved / posted |
+| bay / deep | `#000000` | page background: true black |
+| panel | `#0b0b0b` | surfaces |
+| raised | `#151515` | selected rows, hovers |
+| line | `#242424` | hairlines, lanes, tile borders |
+| ink | `#f5f5f5` | text, primary buttons |
+| dim / faint | `#a3a3a3` / `#666666` | secondary text |
+| signal | `#ffe500` | **only** the active caption word, icons of a feature, signal data |
+| air / go | `#ff5a4f` / `#34d27b` | live, approved |
+
+**Corners.** Square everywhere (`border-radius: 0` on every element), in the site and in the
+panel: the frame of a monitor, not a bubble.
+
+**Icons.** Lucide for features, Simple Icons (CC0) for the platforms, both in the text colour,
+with the feature icons in the accent.
 
 **Type.**
 - **Montserrat Black**, uppercase, with a black outline. It is the exact caption the product
