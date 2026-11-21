@@ -6,9 +6,9 @@ view. **Job of the page:** show, in the first screen, a live turning into a clip
 how (the signals it listens to, the edit it makes, where it posts). The TikTok reviewers must
 also find the terms and the privacy policy without opening a menu.
 
-## Direction: an edit bay at night
+## Direction: a black edit bay
 
-The product's own world sets the look: the dark graphite of an editing suite, the tally lights
+The product's own world sets the look: an editing suite with the lights off, the tally lights
 of a broadcast (red = on air, green = approved), and the burned-in caption that every short
 video wears. Nothing is decoration that the product doesn't also use.
 
