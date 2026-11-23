@@ -9,6 +9,8 @@
       content="O clipper acompanha lives da Twitch, da Kick e do YouTube, acha os melhores momentos, corta clipes verticais com legenda e posta no YouTube Shorts, no TikTok e no Instagram."
     />
     <meta name="theme-color" content="#000000" />
+    <!-- the app's address (e.g. https://app.<domain>); empty: the sign-up buttons say "Em breve" -->
+    <meta name="clipper-app-url" content="" />
     <meta property="og:title" content="clipper: sua live vira clipe enquanto acontece" />
     <meta
       property="og:description"
@@ -30,6 +32,7 @@
         <a href="#perfis">Perfis</a>
         <a href="#edicao">Edição</a>
         <a href="#publicacao">Publicação</a>
+        <a href="#precos">Preços</a>
         <a href="#perguntas">Perguntas</a>
       </nav>
       <div class="nav-legal">
@@ -441,33 +444,98 @@
         </div>
       </section>
 
-      <!-- ============================================================ local -->
+      <!-- ============================================================ where -->
       <section class="section local" aria-labelledby="local-title">
-        <h2 id="local-title" class="section-title">No seu PC, com as suas chaves</h2>
+        <h2 id="local-title" class="section-title">Na nuvem, ou no seu PC</h2>
         <div class="local-grid">
           <div>
-            <h3><i data-icon="Lock"></i>Nada passa por um servidor nosso</h3>
+            <h3><i data-icon="Cloud"></i>Na nuvem, sem instalar nada</h3>
             <p>
-              Vídeos, clipes e as chaves das contas conectadas ficam numa pasta que só a sua conta do Windows lê. O
-              detector de sons e a transcrição rodam no seu processador.
+              Crie a conta com o seu e-mail, cole o link da VOD e acompanhe o progresso. Os clipes ficam no painel, que
+              abre no PC e no celular, e a agenda posta mesmo com o seu computador desligado.
             </p>
           </div>
           <div>
-            <h3><i data-icon="Sparkles"></i>IA opcional, gasto sob controle</h3>
+            <h3><i data-icon="Monitor"></i>No seu PC, sem limite de horas</h3>
             <p>
-              Sem IA, ele escolhe, corta e titula sozinho. Com a chave da Anthropic, a IA confere os momentos lendo só
-              a transcrição em volta deles. As tarefas simples vão para um modelo até 20 vezes mais barato, e o
-              painel mostra o gasto por tarefa.
+              Nos planos Pro e Agência, o agente processa os vídeos no seu computador: essas horas não contam no plano.
+              É também o caminho para cortar vídeos do YouTube.
             </p>
           </div>
           <div>
-            <h3><i data-icon="Smartphone"></i>Celular de qualquer lugar</h3>
+            <h3><i data-icon="Lock"></i>Suas contas protegidas</h3>
             <p>
-              A página do celular abre pela rede de casa ou por um link temporário, protegida por um código que você
-              troca quando quiser.
+              Entrada sem senha, por código no e-mail. As chaves das contas conectadas ficam cifradas, cada equipe só
+              enxerga os próprios vídeos, e os links dos clipes vencem em uma hora.
             </p>
           </div>
         </div>
+      </section>
+
+      <!-- ============================================================ prices -->
+      <section id="precos" class="section prices" aria-labelledby="prices-title" data-pricing>
+        <div class="prices-head">
+          <h2 id="prices-title" class="section-title">Preço por hora de vídeo, não por clipe</h2>
+          <div class="prices-toggle" role="group" aria-label="Cobrança">
+            <button type="button" data-interval="month" aria-pressed="true">Mensal</button>
+            <button type="button" data-interval="year" aria-pressed="false">Anual, 40% menos</button>
+          </div>
+        </div>
+        <p class="prices-lead">
+          Cada hora de vídeo processada na nuvem conta no plano, com quantos clipes sair dela. Horas que sobram não
+          acumulam; os pacotes extras valem 12 meses. Cancela em um clique, e o plano vale até o fim do período pago.
+        </p>
+        <div class="prices-grid">
+          <article class="price">
+            <h3>Grátis</h3>
+            <p class="price-value"><span data-price="free">0</span><small>&nbsp;</small></p>
+            <ul>
+              <li>3 h de vídeo por mês</li>
+              <li>1 conta por rede, postagem manual</li>
+              <li>Clipes guardados por 7 dias</li>
+              <li>Marca "feito com clipper"</li>
+            </ul>
+            <a class="button button-quiet" data-app>Começar grátis</a>
+          </article>
+          <article class="price">
+            <h3>Starter</h3>
+            <p class="price-value"><span data-price="starter">—</span><small data-per="starter">/mês</small></p>
+            <ul>
+              <li>30 h de vídeo por mês</li>
+              <li>1 canal ao vivo acompanhado</li>
+              <li>1 conta por rede, postagem automática</li>
+              <li>Clipes guardados por 30 dias</li>
+            </ul>
+            <a class="button button-quiet" data-app>Assinar</a>
+          </article>
+          <article class="price price-main">
+            <h3>Pro</h3>
+            <p class="price-value"><span data-price="pro">—</span><small data-per="pro">/mês</small></p>
+            <ul>
+              <li>120 h de vídeo por mês</li>
+              <li>Agente no seu PC: horas ilimitadas</li>
+              <li>5 canais ao vivo, 5 contas por rede</li>
+              <li>Clipes guardados por 90 dias, 2 pessoas</li>
+            </ul>
+            <a class="button" data-app>Assinar</a>
+          </article>
+          <article class="price">
+            <h3>Agência</h3>
+            <p class="price-value"><span data-price="agency">—</span><small data-per="agency">/mês</small></p>
+            <ul>
+              <li>400 h de vídeo por mês</li>
+              <li>Agente no seu PC: horas ilimitadas</li>
+              <li>20 canais ao vivo, 20 contas por rede</li>
+              <li>Clipes guardados por 180 dias, 5 pessoas</li>
+            </ul>
+            <a class="button button-quiet" data-app>Assinar</a>
+          </article>
+        </div>
+        <p class="prices-note" data-currency-note></p>
+        <p class="prices-note">
+          No Brasil: cartão, Pix e Pix Automático. Fora dele, o pagamento é processado pela Paddle, que cobra os impostos
+          do seu país. 7 dias para pedir o dinheiro de volta (<a href="refund.html">reembolso</a>).
+        </p>
       </section>
 
       <!-- ============================================================ faq -->
@@ -476,8 +544,23 @@
         <details>
           <summary>Precisa deixar o PC ligado?</summary>
           <p>
-            Sim, durante as lives que você quer acompanhar e nos horários de post do TikTok e do Instagram. O YouTube
-            recebe os vídeos agendados com um dia de antecedência, então ele publica mesmo com o PC desligado.
+            Na nuvem, não: os vídeos são processados e postados de lá. Só o agente, quando você escolhe processar no
+            seu PC, precisa do computador ligado enquanto trabalha.
+          </p>
+        </details>
+        <details>
+          <summary>O que conta como hora?</summary>
+          <p>
+            A duração do trecho processado na nuvem. Uma VOD de 2 h inteira conta 2 h; se você pedir só da 1:00:00 à
+            1:30:00, conta 30 min. Vídeo que falha por um problema nosso não conta.
+          </p>
+        </details>
+        <details>
+          <summary>Como pago e como cancelo?</summary>
+          <p>
+            No Brasil, com cartão, Pix ou Pix Automático; nos outros países, com cartão e as formas de pagamento do seu
+            país. Cancelar é um clique no painel e o plano segue até o fim do período pago. Em até 7 dias da primeira
+            compra, devolvemos o valor (<a href="refund.html">política de reembolso</a>).
           </p>
         </details>
         <details>
@@ -497,11 +580,11 @@
           </p>
         </details>
         <details>
-          <summary>O que o clipper faz com a minha conta do TikTok?</summary>
+          <summary>O que o clipper faz com as minhas contas?</summary>
           <p>
-            Lê o perfil básico, para mostrar qual conta está conectada, e envia os clipes que você aprovou, com a
-            legenda que você escolheu. Você desconecta quando quiser. Os detalhes estão na
-            <a href="privacy.html">política de privacidade</a>.
+            Lê o perfil básico, para mostrar qual conta está conectada, envia os clipes que você aprovou, com a legenda
+            que você escolheu, e lê os números dos seus posts para mostrar os resultados. Você desconecta quando quiser.
+            Os detalhes estão na <a href="privacy.html">política de privacidade</a>.
           </p>
         </details>
         <details>
@@ -528,13 +611,14 @@
       <section class="english" lang="en" aria-labelledby="english-title">
         <h2 id="english-title">In English</h2>
         <p>
-          clipper is a personal tool that runs on the creator's own computer. It follows Twitch, Kick and YouTube
-          streams, finds the best moments by listening to the audio, reading chat and the transcript, and turns them
-          into captioned vertical clips (1080×1920). After the creator reviews and approves each clip, it can post
-          it to the creator's own YouTube, TikTok (as an inbox draft, through the Content Posting API, with the
-          account owner's authorization via Login Kit) and Instagram accounts. Only the basic TikTok profile is
-          read, to show which account is connected.
-          <a href="terms.html#en">Terms of Service</a> and <a href="privacy.html#en">Privacy Policy</a>.
+          clipper turns Twitch, Kick and YouTube streams into captioned vertical clips (1080×1920). It finds the best
+          moments by listening to the audio, reading chat and the transcript, and runs as a cloud service (sign in with
+          an e-mailed code, paste a link) or on the creator's own computer. After the creator reviews and approves each
+          clip, it can post it to the creator's own YouTube, TikTok (through the Content Posting API, with the account
+          owner's authorization via Login Kit) and Instagram accounts. Plans are priced by hours of video processed,
+          in the visitor's currency.
+          <a href="terms.html#en">Terms of Service</a>, <a href="privacy.html#en">Privacy Policy</a>,
+          <a href="refund.html#en">Refunds</a> and <a href="copyright.html#en">Copyright</a>.
         </p>
       </section>
     </main>
@@ -544,9 +628,11 @@
       <nav aria-label="Legal">
         <a href="terms.html">Termos de uso / Terms of Service</a>
         <a href="privacy.html">Política de privacidade / Privacy Policy</a>
+        <a href="refund.html">Reembolso / Refunds</a>
+        <a href="copyright.html">Direitos autorais / Copyright</a>
         <a href="https://github.com/RafaelMonteiroDev/clipper-site/issues">Contato</a>
       </nav>
-      <p>Ferramenta pessoal. Não é afiliada à Twitch, à Kick, ao YouTube, ao TikTok nem ao Instagram.</p>
+      <p>Não é afiliado à Twitch, à Kick, ao YouTube, ao TikTok nem ao Instagram.</p>
     </footer>
 
     <script type="module" src="./src/main.ts"></script>

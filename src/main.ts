@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Lenis from 'lenis'
 import { hydrateIcons } from './icons'
 import { createScene, drawPhone } from './scene'
+import { setupPricing } from './pricing'
 import { setupMock, setupProfiles } from './sections'
 
 
@@ -11,6 +12,7 @@ gsap.registerPlugin(ScrollTrigger)
 hydrateIcons()
 setupProfiles()
 setupMock()
+setupPricing()
 
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches
 const $ = <T extends Element = HTMLElement>(sel: string, root: ParentNode = document) =>

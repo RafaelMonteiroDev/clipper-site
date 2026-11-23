@@ -5,6 +5,7 @@
 import {
   AudioLines,
   CalendarClock,
+  Cloud,
   Gauge,
   Image,
   Laugh,
@@ -13,6 +14,7 @@ import {
   Lock,
   MessageSquare,
   Mic,
+  Monitor,
   Play,
   Repeat,
   Scissors,
@@ -30,6 +32,7 @@ import { siInstagram, siKick, siTiktok, siTwitch, siYoutube, siYoutubeshorts } f
 const ICONS: Record<string, IconNode> = {
   AudioLines,
   CalendarClock,
+  Cloud,
   Gauge,
   Image,
   Laugh,
@@ -38,6 +41,7 @@ const ICONS: Record<string, IconNode> = {
   Lock,
   MessageSquare,
   Mic,
+  Monitor,
   Play,
   Repeat,
   Scissors,
