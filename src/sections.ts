@@ -1,4 +1,5 @@
 /** The profile-studio demo and the panel mock: two showcases drawn from the same scene. */
+import { pick, t } from './i18n'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { createScene, drawPhone } from './scene'
 
@@ -35,25 +36,25 @@ type Preset = {
 const PRESETS: Record<string, Preset> = {
   gameplay: {
     font: "900 22px 'Montserrat', sans-serif",
-    words: ['ELE ', 'CAIU', ' DE'],
+    words: pick({ pt: ['ELE ', 'CAIU', ' DE'], es: ['SE ', 'CAYÓ', ' OTRA'], en: ['HE ', 'FELL', ' AGAIN'], tr: ['YİNE ', 'DÜŞTÜ', ''] }),
     captionTop: '33%',
     accent: '#ffe500',
     stroke: '#000',
     hook: { bg: '#fff', color: '#141414', top: '12%' },
-    tag: { text: '@seucanal', top: '72%' },
+    tag: { text: t('@seucanal'), top: '72%' },
     cta: null,
     logo: false,
     frame: false,
     spec: [
-      ['Legenda', 'Montserrat, 3 palavras, na emenda da câmera com o jogo'],
-      ['Gancho', 'Caixa branca, 2,5 s'],
-      ['Marca', 'Selo @seucanal na cor de destaque'],
-      ['Edição', 'Corta silêncio, zoom na reação'],
+      [t('Legenda'), t('Montserrat, 3 palavras, na emenda da câmera com o jogo')],
+      [t('Gancho'), t('Caixa branca, 2,5 s')],
+      [t('Marca'), t('Selo @seucanal na cor de destaque')],
+      [t('Edição'), t('Corta silêncio, zoom na reação')],
     ],
   },
   podcast: {
     font: "800 25px 'Archivo Variable', sans-serif",
-    words: ['NÃO ', 'ACREDITO', ''],
+    words: pick({ pt: ['NÃO ', 'ACREDITO', ''], es: ['NO ', 'PUEDE SER', ''], en: ['NO ', 'WAY', ''], tr: ['', 'İNANAMIYORUM', ''] }),
     captionTop: '58%',
     accent: '#34d27b',
     stroke: '#000',
@@ -63,15 +64,15 @@ const PRESETS: Record<string, Preset> = {
     logo: true,
     frame: false,
     spec: [
-      ['Legenda', 'Condensada, 2 palavras, mais baixa'],
-      ['Gancho', 'Caixa preta, no topo'],
-      ['Elementos', 'Logo no canto; "segue pra mais" nos 3 s finais'],
-      ['Edição', 'Final em loop'],
+      [t('Legenda'), t('Condensada, 2 palavras, mais baixa')],
+      [t('Gancho'), t('Caixa preta, no topo')],
+      [t('Elementos'), t('Logo no canto; "segue pra mais" nos 3 s finais')],
+      [t('Edição'), t('Final em loop')],
     ],
   },
   minimal: {
     font: "700 19px 'Archivo Variable', sans-serif",
-    words: ['ele caiu ', 'de novo', ''],
+    words: pick({ pt: ['ele caiu ', 'de novo', ''], es: ['se cayó ', 'otra vez', ''], en: ['he fell ', 'again', ''], tr: ['yine ', 'düştü', ''] }),
     captionTop: '68%',
     accent: '#ffffff',
     stroke: 'rgba(0,0,0,.85)',
@@ -81,28 +82,28 @@ const PRESETS: Record<string, Preset> = {
     logo: false,
     frame: false,
     spec: [
-      ['Legenda', 'Sem caixa alta, 4 palavras'],
-      ['Gancho', 'Desligado'],
-      ['Marca', 'Nenhuma'],
-      ['Edição', 'Sem zoom'],
+      [t('Legenda'), t('Sem caixa alta, 4 palavras')],
+      [t('Gancho'), t('Desligado')],
+      [t('Marca'), t('Nenhuma')],
+      [t('Edição'), t('Sem zoom')],
     ],
   },
   campaign: {
     font: "900 22px 'Montserrat', sans-serif",
-    words: ['OLHA ', 'ISSO', ''],
+    words: pick({ pt: ['OLHA ', 'ISSO', ''], es: ['MIRA ', 'ESTO', ''], en: ['LOOK ', 'AT THIS', ''], tr: ['ŞUNA ', 'BAK', ''] }),
     captionTop: '33%',
     accent: '#ff4fb8',
     stroke: '#000',
     hook: { bg: '#ff4fb8', color: '#141414', top: '12%' },
-    tag: { text: '@seucanal  •  twitch.tv/streamer', top: '72%' },
+    tag: { text: `${t('@seucanal')}  •  twitch.tv/streamer`, top: '72%' },
     cta: { text: 'PARTE 2 NO PERFIL', bg: '#101010', color: '#fff' },
     logo: false,
     frame: true,
     spec: [
-      ['Legenda', 'Destaque rosa da campanha'],
-      ['Marca', 'Moldura + selo com o crédito do streamer'],
-      ['Elementos', '"Parte 2 no perfil" no fim'],
-      ['Uso', 'Só nas lives do streamer da campanha'],
+      [t('Legenda'), t('Destaque rosa da campanha')],
+      [t('Marca'), t('Moldura + selo com o crédito do streamer')],
+      [t('Elementos'), t('"Parte 2 no perfil" no fim')],
+      [t('Uso'), t('Só nas lives do streamer da campanha')],
     ],
   },
 }

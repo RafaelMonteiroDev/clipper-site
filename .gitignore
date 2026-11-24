@@ -1,2 +1,6 @@
 node_modules
 dist
+# written by scripts/langs.mjs from the Portuguese pages
+/es/
+/en/
+/tr/

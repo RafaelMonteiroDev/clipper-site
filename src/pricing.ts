@@ -1,3 +1,4 @@
+import { t } from './i18n'
 /**
  * The price section: each plan in the visitor's currency. The country is a guess for display
  * (time zone, then browser language); the price actually charged is set at checkout from the
@@ -83,7 +84,9 @@ export function setupPricing() {
       // yearly shown as the monthly equivalent, with the yearly total under it
       const value = yearly ? Math.round(month * YEARLY_FACTOR * 100) / 100 : month
       cell.textContent = money(value, o.currency, lang)
-      per.textContent = yearly ? `/mês, ${money(Math.round(month * 12 * YEARLY_FACTOR * 100) / 100, o.currency, lang)} por ano` : '/mês'
+      per.textContent = yearly
+        ? t('/mês, {total} por ano', { total: money(Math.round(month * 12 * YEARLY_FACTOR * 100) / 100, o.currency, lang) })
+        : t('/mês')
     }
     root.querySelectorAll<HTMLButtonElement>('[data-interval]').forEach((b) => {
       b.setAttribute('aria-pressed', String((b.dataset.interval === 'year') === yearly))
@@ -96,18 +99,29 @@ export function setupPricing() {
     }),
   )
   const where = root.querySelector('[data-currency-note]')
-  if (where) where.textContent = `Preços em ${o.currency}. O valor final aparece no pagamento, pelo país do seu cartão.`
+  if (where) where.textContent = t('Preços em {currency}. O valor final aparece no pagamento, pelo país do seu cartão.', { currency: o.currency })
   render()
 
-  // the buttons go to the app once its address is set; until then they say so
+  setupAppButtons()
+}
+
+/** The sign-up buttons: before the launch they open the waitlist, after it they go to the app
+ * (with the invite code someone came by), and with no app address yet they say "soon". */
+export function setupAppButtons() {
   const app = document.querySelector('meta[name="clipper-app-url"]')?.getAttribute('content') ?? ''
+  const launch = document.querySelector('meta[name="clipper-launch"]')?.getAttribute('content') ?? 'waitlist'
   document.querySelectorAll<HTMLAnchorElement>('[data-app]').forEach((a) => {
-    if (app) {
-      a.href = app
+    if (app && launch === 'open') {
+      const ref = localStorage.getItem('clipper-ref')
+      a.href = ref ? `${app.replace(/\/$/, '')}/?ref=${encodeURIComponent(ref)}` : app
+    } else if (app) {
+      a.href = '#lista'
+      a.dataset.waitlist = ''
+      if (!a.dataset.plan || a.dataset.plan === 'free') a.textContent = t('Entrar na lista de espera')
     } else {
       a.removeAttribute('href')
       a.setAttribute('aria-disabled', 'true')
-      a.textContent = 'Em breve'
+      a.textContent = t('Em breve')
     }
   })
 }

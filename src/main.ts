@@ -1,3 +1,4 @@
+import { pick, t as tr } from './i18n'
 import './styles.css'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -5,6 +6,7 @@ import Lenis from 'lenis'
 import { hydrateIcons } from './icons'
 import { createScene, drawPhone } from './scene'
 import { setupPricing } from './pricing'
+import { setupWaitlist } from './waitlist'
 import { setupMock, setupProfiles } from './sections'
 
 
@@ -13,6 +15,7 @@ hydrateIcons()
 setupProfiles()
 setupMock()
 setupPricing()
+setupWaitlist()
 
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches
 const $ = <T extends Element = HTMLElement>(sel: string, root: ParentNode = document) =>
@@ -121,11 +124,32 @@ function drawLane(canvas: HTMLCanvasElement, values: number[], t: number, color:
   }
 }
 
-const CHAT_NAMES = ['vitinho_', 'luagamer', 'kaua09', 'mariz', 'pedrao', 'nanda', 'zeca_', 'biel', 'tutu', 'jow']
+const CHAT_NAMES = pick({
+  pt: ['vitinho_', 'luagamer', 'kaua09', 'mariz', 'pedrao', 'nanda', 'zeca_', 'biel', 'tutu', 'jow'],
+  es: ['santi_', 'valegamer', 'mateo09', 'luci', 'nacho', 'cami', 'juanpi_', 'fede', 'tomi', 'agus'],
+  en: ['jake_', 'mia_plays', 'tyler09', 'em', 'bigdan', 'sky', 'nate_', 'ollie', 'zoe', 'kev'],
+  tr: ['emre_', 'zeynep_oyun', 'can09', 'elif', 'burak', 'ece', 'mert_', 'deniz', 'ali', 'selin'],
+})
 const CHAT_COLORS = ['#7dd3fc', '#f9a8d4', '#fcd34d', '#86efac', '#c4b5fd', '#fda4af']
-const CHAT_CALM = ['boa', 'que carro é esse', 'vai pela praia', 'kkk', 'lindo esse por do sol', 'acelera', 'hm', 'fala mano', 'vai la']
-const CHAT_HYPE = ['KKKKKKKKKK', 'CLIPA ISSO', 'KEKW', 'NAO ACREDITO', 'KKKKKK MORRI', 'clipa clipa', 'SOCORRO', 'LUL LUL', 'kkkkkkkkkk']
-const CAPTION = ['E', 'DO', 'NADA', 'ELE', 'FREIA', 'NA', 'MINHA', 'FRENTE', 'NÃO', 'ACREDITO']
+const CHAT_CALM = pick({
+  pt: ['boa', 'que carro é esse', 'vai pela praia', 'kkk', 'lindo esse por do sol', 'acelera', 'hm', 'fala mano', 'vai la'],
+  es: ['buena', 'qué auto es ese', 've por la playa', 'jaja', 'qué lindo atardecer', 'acelera', 'mm', 'qué onda', 'dale'],
+  en: ['nice', 'what car is that', 'take the beach road', 'lol', 'that sunset tho', 'floor it', 'hm', 'yo', 'go go'],
+  tr: ['güzel', 'bu araba ne', 'sahilden git', 'sjsj', 'gün batımı çok güzel', 'bas gaza', 'hm', 'selam', 'hadi'],
+})
+const CHAT_HYPE = pick({
+  pt: ['KKKKKKKKKK', 'CLIPA ISSO', 'KEKW', 'NAO ACREDITO', 'KKKKKK MORRI', 'clipa clipa', 'SOCORRO', 'LUL LUL', 'kkkkkkkkkk'],
+  es: ['JAJAJAJAJA', 'CLIPEEN ESO', 'KEKW', 'NO PUEDE SER', 'JAJAJA ME MUERO', 'clip clip', 'NOOOO', 'LUL LUL', 'jajajajaja'],
+  en: ['LMAOOOO', 'CLIP IT', 'KEKW', 'NO WAY', 'IM DEAD', 'clip that', 'BRO', 'LUL LUL', 'lmaooo'],
+  tr: ['SJSJSJSJSJ', 'KLİPLEYİN', 'KEKW', 'İNANAMIYORUM', 'ÖLDÜM SJSJ', 'klip klip', 'YOK ARTIK', 'LUL LUL', 'ksksksks'],
+})
+const CAPTION = pick({
+  pt: ['E', 'DO', 'NADA', 'ELE', 'FREIA', 'NA', 'MINHA', 'FRENTE', 'NÃO', 'ACREDITO'],
+  es: ['Y', 'DE', 'LA', 'NADA', 'FRENA', 'DELANTE', 'DE', 'MÍ', 'NO', 'PUEDE', 'SER'],
+  en: ['AND', 'OUT', 'OF', 'NOWHERE', 'HE', 'BRAKES', 'RIGHT', 'IN', 'FRONT', 'NO', 'WAY'],
+  tr: ['VE', 'BİRDEN', 'ÖNÜMDE', 'FRENE', 'BASIYOR', 'İNANAMIYORUM'],
+})
+const LAST_WORDS = pick({ pt: ['NÃO', 'ACREDITO'], es: ['NO PUEDE', 'SER'], en: ['NO', 'WAY'], tr: ['İNANAMIYORUM', ''] })
 
 function setupStage() {
   const stage = $('[data-stage]')
@@ -158,7 +182,7 @@ function setupStage() {
   }
 
   let lanes = laneData(11)
-  let channel = 'canal'
+  let channel = tr('canal')
   const SCAN_S = 8 // the playhead crosses the timeline
   const CLIP_S = 7 // the clip plays in the phone
   const HOLD_S = 3
@@ -192,7 +216,7 @@ function setupStage() {
     found.hidden = true
     cut.hidden = true
     empty.classList.remove('gone')
-    wait.textContent = 'Procurando o momento'
+    wait.textContent = tr('Procurando o momento')
     hook.classList.remove('show')
     caption.replaceChildren()
     steps.forEach((s) => s.classList.remove('done'))
@@ -232,8 +256,8 @@ function setupStage() {
     if (!decoyShown && x > DECOY + 0.01 && x < DECOY + 0.06) {
       decoyShown = true
       found.hidden = false
-      found.querySelector('strong')!.textContent = 'Volume alto, sem reação'
-      foundWhy.textContent = 'explosão no jogo: não vira clipe'
+      found.querySelector('strong')!.textContent = tr('Volume alto, sem reação')
+      foundWhy.textContent = tr('explosão no jogo: não vira clipe')
       found.style.borderColor = 'var(--line)'
     }
     if (decoyShown && !shownFound && x > DECOY + 0.09) found.hidden = true
@@ -241,12 +265,12 @@ function setupStage() {
       shownFound = true
       found.hidden = false
       found.style.borderColor = ''
-      found.querySelector('strong')!.textContent = 'Momento encontrado'
-      foundWhy.textContent = 'risada + chat rindo + chat pedindo clipe'
+      found.querySelector('strong')!.textContent = tr('Momento encontrado')
+      foundWhy.textContent = tr('risada + chat rindo + chat pedindo clipe')
       cut.hidden = false
       cut.style.setProperty('--a', String(CUT_A))
       cut.style.setProperty('--b', String(CUT_B))
-      wait.textContent = 'Cortando e legendando'
+      wait.textContent = tr('Cortando e legendando')
     }
 
     // the clip in the phone
@@ -286,7 +310,7 @@ function setupStage() {
     lanesEls.forEach((c, i) => drawLane(c, lanes[laneKeys[i]], 0.72, COLORS[laneKeys[i]], laneKeys[i] !== 'score'))
     playhead.style.setProperty('--t', '0.72')
     empty.classList.add('gone')
-    caption.innerHTML = '<span>NÃO</span> <span class="lit">ACREDITO</span>'
+    caption.innerHTML = `<span>${LAST_WORDS[0]}</span> <span class="lit">${LAST_WORDS[1]}</span>`
     cut.hidden = false
     cut.style.setProperty('--a', String(CUT_A))
     cut.style.setProperty('--b', String(CUT_B))
@@ -324,11 +348,11 @@ function setupBoard() {
   const peaks = [0.22, 0.55, 0.83]
   const decoys = [0.38, 0.7]
   const lanes: { key: string; label: string; values: number[]; score?: boolean }[] = [
-    { key: 'chat', label: 'Chat', values: [] },
-    { key: 'laugh', label: 'Sons', values: [] },
-    { key: 'volume', label: 'Volume', values: [] },
-    { key: 'speech', label: 'Fala', values: [] },
-    { key: 'score', label: 'Força', values: [], score: true },
+    { key: 'chat', label: tr('Chat'), values: [] },
+    { key: 'laugh', label: tr('Sons'), values: [] },
+    { key: 'volume', label: tr('Volume'), values: [] },
+    { key: 'speech', label: tr('Fala'), values: [] },
+    { key: 'score', label: tr('Força'), values: [], score: true },
   ]
   for (let i = 0; i < M; i++) {
     const x = i / M
@@ -535,16 +559,16 @@ function setupPublish() {
   const schedule = $('[data-schedule]')
   if (schedule) {
     const slots = [
-      ['11:00', 'Canal principal', 'quente 92'],
-      ['14:00', 'Canal de cortes', 'quente 87'],
-      ['17:30', 'Canal principal', 'quente 81'],
-      ['19:00', 'TikTok, rascunho', 'quente 78'],
-      ['21:30', 'Instagram Reels', 'quente 74'],
+      ['11:00', tr('Canal principal'), `${tr('quente')} 92`],
+      ['14:00', tr('Canal de cortes'), `${tr('quente')} 87`],
+      ['17:30', tr('Canal principal'), `${tr('quente')} 81`],
+      ['19:00', tr('TikTok, rascunho'), `${tr('quente')} 78`],
+      ['21:30', 'Instagram Reels', `${tr('quente')} 74`],
     ]
     slots.forEach(([time, where, heat], i) => {
       const row = document.createElement('div')
       row.className = 'slot'
-      row.innerHTML = `<time>${time}</time><span>Clipe ${i + 1}<br><span class="where">${where}</span></span><span class="heat">${heat}</span>`
+      row.innerHTML = `<time>${time}</time><span>${tr('Clipe')} ${i + 1}<br><span class="where">${where}</span></span><span class="heat">${heat}</span>`
       schedule.append(row)
     })
     if (!reduced)

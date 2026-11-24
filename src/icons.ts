@@ -4,9 +4,14 @@
  */
 import {
   AudioLines,
+  BadgeCheck,
+  Calculator,
   CalendarClock,
+  Check,
   Cloud,
+  Copy,
   Gauge,
+  Gift,
   Image,
   Laugh,
   Layers,
@@ -22,8 +27,12 @@ import {
   SlidersHorizontal,
   Smartphone,
   Sparkles,
+  Timer,
+  TrendingUp,
   Type,
+  Users,
   Volume2,
+  X,
   createElement,
   type IconNode,
 } from 'lucide'
@@ -31,9 +40,14 @@ import { siInstagram, siKick, siTiktok, siTwitch, siYoutube, siYoutubeshorts } f
 
 const ICONS: Record<string, IconNode> = {
   AudioLines,
+  BadgeCheck,
+  Calculator,
   CalendarClock,
+  Check,
   Cloud,
+  Copy,
   Gauge,
+  Gift,
   Image,
   Laugh,
   Layers,
@@ -49,8 +63,12 @@ const ICONS: Record<string, IconNode> = {
   SlidersHorizontal,
   Smartphone,
   Sparkles,
+  Timer,
+  TrendingUp,
   Type,
+  Users,
   Volume2,
+  X,
 }
 const BRANDS: Record<string, { path: string; title: string }> = {
   siInstagram,

@@ -2255,3 +2255,432 @@ h3 {
 .zoom-frame canvas {
   animation: punch 3.2s var(--snap) infinite;
 }
+
+/* ---------------------------------------------------------------- growth: the CTA, languages, the waitlist */
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px 18px;
+  margin: 28px auto 0;
+}
+.hero-actions-note {
+  max-width: 34ch;
+  font-size: 14px;
+  color: var(--dim);
+  text-align: left;
+}
+.nav-cta {
+  padding: 8px 14px;
+  font-size: 14px;
+  color: var(--bay) !important;
+}
+.lang-switch {
+  display: flex;
+  gap: 2px;
+  font-size: 13px;
+  font-stretch: 82%;
+}
+.lang-switch a {
+  padding: 2px 6px;
+  border: 1px solid transparent;
+}
+.lang-switch a[aria-current='true'] {
+  border-color: var(--line);
+  color: var(--ink);
+}
+.lang-offer {
+  position: fixed;
+  right: var(--gutter);
+  bottom: 18px;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px 10px 16px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  font-size: 14px;
+}
+.lang-offer a {
+  color: var(--ink);
+}
+.lang-offer button,
+.waitlist-close {
+  border: 0;
+  background: none;
+  color: var(--dim);
+  font: inherit;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+dialog.waitlist {
+  width: min(520px, calc(100vw - 32px));
+  padding: 28px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+}
+dialog.waitlist::backdrop {
+  background: rgb(0 0 0 / 0.72);
+}
+dialog.waitlist h2 {
+  margin: 0 0 16px;
+  font-size: 26px;
+  font-stretch: 82%;
+}
+.waitlist-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+}
+.waitlist-form,
+.waitlist-share {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+.waitlist-form input,
+.waitlist-link,
+.calc input {
+  flex: 1;
+  min-width: 0;
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  background: var(--bay);
+  color: var(--ink);
+  font: inherit;
+}
+.waitlist-form input:focus,
+.calc input:focus {
+  border-color: var(--ink);
+  outline: none;
+}
+.waitlist-share {
+  flex-wrap: wrap;
+}
+.waitlist-note {
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--dim);
+}
+.waitlist-note.ok {
+  color: var(--ink);
+}
+.waitlist-figures {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  margin: 0;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+.waitlist-figures div {
+  padding: 14px 16px;
+  background: var(--panel);
+}
+.waitlist-figures dt {
+  font-size: 13px;
+  color: var(--faint);
+}
+.waitlist-figures dd {
+  margin: 4px 0 0;
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--signal);
+}
+.waitlist-figures small {
+  color: var(--dim);
+  font-size: 13px;
+}
+
+/* ---------------------------------------------------------------- home: campaigns, prints */
+
+.campaign-grid,
+.print-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 40px;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+.campaign-grid article {
+  padding: 28px;
+  background: var(--panel);
+}
+.campaign-grid h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.campaign-grid h3 .icon,
+.page-steps h3 .icon {
+  color: var(--signal);
+}
+.campaign-grid p {
+  color: var(--dim);
+}
+.campaign-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 22px;
+  margin-top: 28px;
+}
+.text-link {
+  color: var(--dim);
+  text-underline-offset: 4px;
+}
+.text-link:hover {
+  color: var(--ink);
+}
+.print-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.print-grid figure {
+  margin: 0;
+  padding: 14px;
+  background: var(--panel);
+}
+.print-grid img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+}
+.print-grid figcaption {
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--dim);
+}
+
+/* ---------------------------------------------------------------- content pages */
+
+.page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 128px var(--gutter) 0;
+}
+.page-title {
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 800;
+  font-stretch: 82%;
+  line-height: 1.05;
+  margin: 0;
+}
+.page h2 {
+  margin: 48px 0 10px;
+  font-size: 26px;
+  font-stretch: 86%;
+}
+.page p,
+.page-list li {
+  color: var(--dim);
+}
+.page a:not(.button) {
+  color: var(--ink);
+  text-underline-offset: 4px;
+}
+.page-list {
+  padding-left: 20px;
+}
+.page-list li + li {
+  margin-top: 8px;
+}
+.page-steps {
+  display: grid;
+  gap: 1px;
+  margin: 40px 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+.page-steps li {
+  padding: 22px 24px;
+  background: var(--panel);
+  counter-increment: step;
+}
+.page-steps h3::before {
+  content: counter(step);
+  display: inline-block;
+  min-width: 28px;
+  color: var(--signal);
+  font-family: var(--caption);
+  font-weight: 900;
+}
+.page-note {
+  margin-top: 28px;
+  font-size: 14px;
+  color: var(--faint) !important;
+}
+.page-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 64px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+.page-cta p {
+  margin: 0;
+  color: var(--ink) !important;
+  font-size: 19px;
+  font-weight: 700;
+}
+.calc {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 36px;
+}
+.calc label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--dim);
+}
+.calc-out {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin: 24px 0 0;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+.calc-out div {
+  padding: 18px;
+  background: var(--panel);
+}
+.calc-out dt {
+  font-size: 13px;
+  color: var(--faint);
+}
+.calc-out dd {
+  margin: 6px 0 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+.calc-out .calc-main dd {
+  color: var(--signal);
+  font-size: 30px;
+}
+.calc-share {
+  min-height: 1.6em;
+  margin-top: 12px;
+}
+.compare-wrap {
+  margin-top: 32px;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+}
+.compare {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+.compare th,
+.compare td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+.compare thead th {
+  color: var(--faint);
+  font-weight: 600;
+}
+.compare thead th:nth-child(2) {
+  color: var(--signal);
+}
+.compare tbody th {
+  color: var(--dim);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.compare tbody td:nth-child(2) {
+  color: var(--ink);
+}
+.compare tbody td:nth-child(3) {
+  color: var(--dim);
+}
+.status {
+  margin-top: 28px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+.status-state {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--ink) !important;
+}
+.status-state[data-up='true'] {
+  color: var(--go) !important;
+}
+.status-state[data-up='false'] {
+  color: var(--air) !important;
+}
+.status-when {
+  margin: 6px 0 0;
+  font-size: 14px;
+}
+.guide h2 {
+  margin-top: 40px;
+}
+.page .faq {
+  padding: 0;
+  margin-top: 24px;
+}
+.page .faq h2 {
+  margin-top: 36px;
+}
+
+@media (max-width: 900px) {
+  .campaign-grid,
+  .print-grid,
+  .calc,
+  .calc-out {
+    grid-template-columns: 1fr;
+  }
+  .nav-legal > a:not(.nav-cta) {
+    display: none;
+  }
+}
+
+/* the header with the waitlist button: fewer links as the screen narrows, the button always */
+.nav nav a,
+.nav-legal a {
+  white-space: nowrap;
+}
+.nav-legal {
+  align-items: center;
+}
+@media (max-width: 1240px) {
+  .nav-legal > a:not(.nav-cta) {
+    display: none;
+  }
+}
+@media (max-width: 1040px) {
+  .nav > nav {
+    display: none;
+  }
+}
+@media (max-width: 560px) {
+  .nav .lang-switch {
+    display: none;
+  }
+  .hero-actions-note {
+    text-align: center;
+  }
+}

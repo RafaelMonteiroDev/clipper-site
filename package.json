@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "dev": "node scripts/langs.mjs && vite",
+    "build": "node scripts/langs.mjs && tsc --noEmit && vite build",
     "preview": "vite preview",
     "deploy": "sh deploy.sh"
   },
@@ -18,6 +18,7 @@
     "simple-icons": "16.38.0"
   },
   "devDependencies": {
+    "node-html-parser": "7.0.1",
     "typescript": "~5.9.3",
     "vite": "^8.3.6"
   }

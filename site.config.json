@@ -1,0 +1,22 @@
+{
+  "url": "https://rafaelmonteirodev.github.io/clipper-site",
+  "languages": {
+    "pt-BR": { "dir": "", "name": "Português" },
+    "es": { "dir": "es", "name": "Español" },
+    "en": { "dir": "en", "name": "English" },
+    "tr": { "dir": "tr", "name": "Türkçe" }
+  },
+  "pages": {
+    "index.html": ["pt-BR", "es", "en", "tr"],
+    "calculadora.html": ["pt-BR", "es", "en", "tr"],
+    "afiliados.html": ["pt-BR", "es", "en", "tr"],
+    "ajuda.html": ["pt-BR", "es", "en", "tr"],
+    "status.html": ["pt-BR", "es", "en", "tr"],
+    "vs-opusclip.html": ["pt-BR", "es", "en"],
+    "vs-cutpro.html": ["pt-BR", "es", "en"],
+    "guias/clipar-lives-da-kick.html": ["pt-BR", "es", "en"],
+    "guias/quanto-paga-campanha-de-clipping.html": ["pt-BR", "es", "en"],
+    "guias/operacao-de-cortes.html": ["pt-BR", "es", "en"]
+  },
+  "shared": ["terms.html", "privacy.html", "refund.html", "copyright.html"]
+}
