@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="$lang">
+<head>
+<meta charset="utf-8">
+<title>clipper: $s1a $s1b</title>
+<style>
+@font-face { font-family: 'Anton'; src: url('Anton-Regular.ttf'); }
+@font-face { font-family: 'Mont'; font-weight: 900; src: url('Montserrat-Black.ttf'); }
+@font-face { font-family: 'Mont'; font-weight: 800; src: url('Montserrat-ExtraBold.ttf'); }
+body { margin: 0; background: #000; }
+#root { width: 1080px; height: 1920px; position: relative; overflow: hidden; background: #000; color: #fff; font-family: 'Mont', sans-serif; }
+.scene { position: absolute; inset: 0; }
+.big { font-family: 'Anton', sans-serif; text-transform: uppercase; line-height: 0.95; letter-spacing: 1px; }
+.line { position: absolute; left: 40px; right: 40px; text-align: center; }
+.block { display: inline-block; background: #FFE500; color: #000; padding: 6px 28px 2px; }
+.tag { display: inline-block; background: #E5252A; color: #fff; font-weight: 900; font-size: 56px; padding: 10px 26px; letter-spacing: 2px; }
+.dot { display: inline-block; width: 26px; height: 26px; border-radius: 50%; background: #fff; margin-right: 18px; vertical-align: 4px; }
+.frame { position: absolute; left: 40px; width: 1000px; border: 4px solid #FFE500; overflow: hidden; background: #0b0b0b; }
+.frame img { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+.chip { position: absolute; background: #000; border: 3px solid #FFE500; color: #fff; font-weight: 900; font-size: 56px; padding: 12px 26px; white-space: nowrap; }
+.net { display: inline-block; margin: 14px; padding: 18px 30px; font-weight: 900; font-size: 60px; background: #111; border: 3px solid #333; color: #fff; }
+.net i { display: inline-block; width: 22px; height: 22px; background: #FFE500; margin-right: 18px; vertical-align: 6px; font-style: normal; }
+.mark { position: absolute; top: 214px; left: 0; right: 0; text-align: center; font-family: 'Anton', sans-serif; font-size: 64px; letter-spacing: 1px; }
+.mark b { color: #FFE500; font-weight: normal; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="23.5" data-width="1080" data-height="1920">
+
+  <div id="brand" class="clip" data-start="0" data-duration="6.6" data-track-index="0" style="position:absolute;inset:0;z-index:5;pointer-events:none">
+    <div class="mark">clipper<b>.</b></div>
+  </div>
+
+  <div id="s1" class="clip scene" data-start="0" data-duration="3.4" data-track-index="1">
+    <div class="line" style="top:420px"><span id="s1tag" class="tag"><span class="dot"></span>$live</span></div>
+    <div id="s1a" class="line big" style="top:640px;font-size:200px">$s1a</div>
+    <div class="line big" style="top:860px;font-size:190px"><span id="s1b" class="block">$s1b</span></div>
+    <div id="s1c" class="line" style="top:1150px;font-size:60px;font-weight:800;color:#bbb">$s1c</div>
+  </div>
+
+  <div id="s2" class="clip scene" data-start="3.4" data-duration="3.2" data-track-index="1">
+    <div id="s2flash" style="position:absolute;inset:0;background:#FFE500"></div>
+    <div id="s2a" class="line" style="top:430px;font-size:96px;font-weight:900;color:#bbb">$s2a</div>
+    <div id="s2n" class="line big" style="top:560px;font-size:460px;color:#FFE500">0</div>
+    <div id="s2b" class="line big" style="top:1030px;font-size:190px">$s2b</div>
+  </div>
+
+  <div id="s3" class="clip scene" data-start="6.6" data-duration="5" data-track-index="1">
+    <div id="s3a" class="line big" style="top:300px;font-size:116px">$s3a</div>
+    <div id="s3frame" class="frame" style="top:560px;height:800px">
+      <img id="s3img" src="clipes.webp" style="width:1280px;height:800px;transform:translate(-531px,-200px) scale(1.61)">
+    </div>
+    <div id="c1" class="chip" style="top:1240px;left:70px">$chip1</div>
+    <div id="c2" class="chip" style="top:1330px;left:300px">$chip2</div>
+    <div id="c3" class="chip" style="top:1150px;left:520px">$chip3</div>
+  </div>
+
+  <div id="s4" class="clip scene" data-start="11.6" data-duration="4" data-track-index="1">
+    <div id="s4a" class="line big" style="top:290px;font-size:130px">$s4a</div>
+    <div class="line big" style="top:430px;font-size:150px"><span id="s4b" class="block">$s4b</span></div>
+    <div id="s4frame" class="frame" style="top:700px;height:600px">
+      <img id="s4img" src="lives.webp" style="width:1280px;height:800px;transform:translate(-250px,-143px) scale(1.786)">
+    </div>
+    <div id="s4tag" class="line" style="top:1380px"><span class="tag"><span id="s4dot" class="dot"></span>$live</span></div>
+  </div>
+
+  <div id="s5" class="clip scene" data-start="15.6" data-duration="3.8" data-track-index="1">
+    <img id="s5bg" src="agenda.webp" style="position:absolute;left:-220px;top:500px;width:1520px;height:950px;opacity:0.18">
+    <div id="s5a" class="line big" style="top:300px;font-size:130px">$s5a</div>
+    <div class="line big" style="top:440px;font-size:190px"><span id="s5b" class="block">$s5b</span></div>
+    <div class="line" style="top:760px">
+      <span id="n1" class="net"><i></i>TikTok</span><span id="n2" class="net"><i></i>Shorts</span><br>
+      <span id="n3" class="net"><i></i>Reels</span><span id="n4" class="net"><i></i>Facebook</span><br>
+      <span id="n5" class="net"><i></i>Threads</span><span id="n6" class="net"><i></i>X</span>
+    </div>
+  </div>
+
+  <div id="s6" class="clip scene" data-start="19.4" data-duration="4.1" data-track-index="1">
+    <div id="s6m" class="line big" style="top:300px;font-size:120px">clipper<span style="color:#FFE500">.</span></div>
+    <div id="s6a" class="line big" style="top:520px;font-size:150px">$s6a</div>
+    <div class="line big" style="top:690px;font-size:200px"><span id="s6b" class="block">$s6b</span></div>
+    <div id="s6c" class="line" style="top:1000px;font-size:62px;font-weight:800;line-height:1.25">$s6c</div>
+    <div class="line" style="top:1250px"><span id="s6d" class="block" style="font-weight:900;font-size:64px;padding:22px 40px">$s6d</span></div>
+  </div>
+
+</div>
+<script src="gsap.min.js"></script>
+<script>
+const tl = gsap.timeline({ paused: true });
+// 1: the hook, already on screen at the first frame
+tl.fromTo('#s1a', { scale: 1.18 }, { scale: 1, duration: 0.45, ease: 'power4.out' }, 0);
+tl.fromTo('#s1tag', { scale: 0.6 }, { scale: 1, duration: 0.35, ease: 'back.out(3)' }, 0);
+tl.fromTo('#s1b', { clipPath: 'inset(-30% 100% -10% 0)' }, { clipPath: 'inset(-30% 0% -10% 0)', duration: 0.4, ease: 'expo.out' }, 0.2);
+tl.fromTo('#s1c', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power3.out' }, 0.9);
+tl.to('#s1b', { scale: 1.08, duration: 0.15, ease: 'power2.out', yoyo: true, repeat: 1 }, 1.8);
+tl.to(['#s1a', '#s1b', '#s1c', '#s1tag'], { y: -140, opacity: 0, duration: 0.25, ease: 'power3.in', stagger: 0.03 }, 3.1);
+// 2: the count
+tl.fromTo('#s2flash', { opacity: 1 }, { opacity: 0, duration: 0.25, ease: 'power2.out' }, 3.4);
+tl.fromTo('#s2a', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3, ease: 'power3.out' }, 3.45);
+const count = { n: 0 };
+tl.to(count, { n: $count, duration: 1.5, ease: 'power2.out', onUpdate: () => { document.getElementById('s2n').textContent = Math.round(count.n); } }, 3.55);
+tl.fromTo('#s2n', { scale: 0.7 }, { scale: 1, duration: 0.5, ease: 'back.out(2)' }, 3.5);
+tl.fromTo('#s2b', { clipPath: 'inset(0 -5% 100% -5%)' }, { clipPath: 'inset(-30% -5% -10% -5%)', duration: 0.35, ease: 'expo.out' }, 4.1);
+tl.to('#s2n', { scale: 1.12, duration: 0.12, ease: 'power2.out', yoyo: true, repeat: 1 }, 5.1);
+tl.to(['#s2a', '#s2n', '#s2b'], { x: -1100, duration: 0.3, ease: 'power3.in', stagger: 0.04 }, 6.3);
+// 3: what a clip comes with, on the real panel
+tl.fromTo('#s3a', { x: 1100 }, { x: 0, duration: 0.4, ease: 'power4.out' }, 6.6);
+tl.fromTo('#s3frame', { y: 300, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: 'power3.out' }, 6.75);
+tl.fromTo('#s3img', { x: -531, y: -200, scale: 1.61 }, { x: -600, y: -420, scale: 1.75, duration: 4.6, ease: 'none' }, 6.75);
+tl.fromTo('#c1', { scale: 0, rotation: -6 }, { scale: 1, rotation: -3, duration: 0.35, ease: 'back.out(2.5)' }, 7.6);
+tl.fromTo('#c2', { scale: 0, rotation: 6 }, { scale: 1, rotation: 2, duration: 0.35, ease: 'back.out(2.5)' }, 8.4);
+tl.fromTo('#c3', { scale: 0, rotation: -6 }, { scale: 1, rotation: 3, duration: 0.35, ease: 'back.out(2.5)' }, 9.2);
+tl.to(['#s3a', '#s3frame', '#c1', '#c2', '#c3'], { y: -1700, duration: 0.35, ease: 'power3.in', stagger: 0.02 }, 11.25);
+// 4: while the stream is on
+tl.fromTo('#s4a', { y: 140, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: 'power4.out' }, 11.6);
+tl.fromTo('#s4b', { clipPath: 'inset(-30% 100% -10% 0)' }, { clipPath: 'inset(-30% 0% -10% 0)', duration: 0.4, ease: 'expo.out' }, 11.75);
+tl.fromTo('#s4frame', { scale: 0.85, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: 'power3.out' }, 11.9);
+tl.fromTo("#s4img", { x: -250, y: -143, scale: 1.786 }, { x: -300, y: -330, scale: 2.1, duration: 3.6, ease: "none" }, 11.9);
+tl.fromTo('#s4tag', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3, ease: 'power3.out' }, 12.5);
+tl.to('#s4dot', { opacity: 0.2, duration: 0.35, ease: 'power1.inOut', yoyo: true, repeat: 5 }, 12.8);
+tl.to(['#s4a', '#s4b', '#s4frame', '#s4tag'], { x: 1100, duration: 0.3, ease: 'power3.in', stagger: 0.03 }, 15.3);
+// 5: and posted on its own
+tl.fromTo('#s5bg', { opacity: 0 }, { opacity: 0.18, duration: 0.4 }, 15.6);
+tl.fromTo('#s5a', { x: -1100 }, { x: 0, duration: 0.35, ease: 'power4.out' }, 15.6);
+tl.fromTo('#s5b', { scale: 1.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'power4.out' }, 15.75);
+tl.fromTo(['#n1', '#n2', '#n3', '#n4', '#n5', '#n6'], { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(2.5)', stagger: 0.18 }, 16.3);
+tl.to(['#n1', '#n2', '#n3', '#n4', '#n5', '#n6'], { borderColor: '#FFE500', duration: 0.15, stagger: 0.18 }, 16.5);
+tl.to(['#s5a', '#s5b', '#n1', '#n2', '#n3', '#n4', '#n5', '#n6', '#s5bg'], { opacity: 0, duration: 0.25, ease: 'power2.in' }, 19.15);
+// 6: the waitlist, ending on a clean frame
+tl.fromTo('#s6m', { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power3.out' }, 19.4);
+tl.fromTo('#s6a', { y: 140, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: 'power4.out' }, 19.5);
+tl.fromTo('#s6b', { clipPath: 'inset(-30% 100% -10% 0)' }, { clipPath: 'inset(-30% 0% -10% 0)', duration: 0.45, ease: 'expo.out' }, 19.7);
+tl.fromTo('#s6c', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power3.out' }, 20.3);
+tl.fromTo('#s6d', { scale: 0 }, { scale: 1, duration: 0.4, ease: 'back.out(2.5)' }, 20.8);
+tl.to('#s6d', { scale: 1.06, duration: 0.18, ease: 'power2.out', yoyo: true, repeat: 3 }, 21.6);
+window.__timelines = window.__timelines || {};
+window.__timelines.main = tl;
+</script>
+</body>
+</html>
