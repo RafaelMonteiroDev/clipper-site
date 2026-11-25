@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="$lang">
+<head>
+<meta charset="utf-8">
+<title>clipper: $f1a $f1b</title>
+<style>
+@font-face { font-family: 'Anton'; src: url('Anton-Regular.ttf'); }
+@font-face { font-family: 'Mont'; font-weight: 900; src: url('Montserrat-Black.ttf'); }
+@font-face { font-family: 'Mont'; font-weight: 800; src: url('Montserrat-ExtraBold.ttf'); }
+body { margin: 0; background: #000; }
+#root { width: 1080px; height: 1920px; position: relative; overflow: hidden; background: #000; color: #fff; font-family: 'Mont', sans-serif; }
+.scene { position: absolute; inset: 0; }
+.big { font-family: 'Anton', sans-serif; text-transform: uppercase; line-height: 0.95; letter-spacing: 1px; }
+.line { position: absolute; left: 40px; right: 40px; text-align: center; }
+.block { display: inline-block; background: #FFE500; color: #000; padding: 6px 28px 2px; }
+.frame { position: absolute; left: 40px; width: 1000px; border: 4px solid #FFE500; overflow: hidden; background: #0b0b0b; }
+.frame img { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+.friend { position: absolute; left: 90px; right: 90px; height: 170px; background: #111; border: 3px solid #333; display: flex; align-items: center; justify-content: space-between; padding: 0 44px; box-sizing: border-box; }
+.friend .who { font-weight: 900; font-size: 58px; }
+.friend .who i { display: inline-block; width: 26px; height: 26px; background: #FFE500; margin-right: 24px; vertical-align: 6px; font-style: normal; }
+.friend .up { font-family: 'Anton', sans-serif; font-size: 96px; color: #FFE500; }
+.step { position: absolute; left: 90px; right: 90px; height: 150px; border: 3px solid #333; background: #0b0b0b; font-weight: 900; font-size: 48px; display: flex; align-items: center; padding: 0 40px; box-sizing: border-box; }
+.step b { font-family: 'Anton', sans-serif; font-weight: normal; color: #FFE500; font-size: 80px; margin-right: 36px; }
+.mark { position: absolute; top: 214px; left: 0; right: 0; text-align: center; font-family: 'Anton', sans-serif; font-size: 64px; letter-spacing: 1px; }
+.mark b { color: #FFE500; font-weight: normal; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="20" data-width="1080" data-height="1920">
+
+  <div id="brand" class="clip" data-start="0" data-duration="3.2" data-track-index="0" style="position:absolute;inset:0;z-index:5;pointer-events:none">
+    <div class="mark">clipper<b>.</b></div>
+  </div>
+
+  <div id="f1" class="clip scene" data-start="0" data-duration="3.2" data-track-index="1">
+    <div id="f1a" class="line big" style="top:560px;font-size:190px">$f1a</div>
+    <div class="line big" style="top:780px;font-size:200px"><span id="f1b" class="block">$f1b</span></div>
+    <div id="f1c" class="line" style="top:1090px;font-size:62px;font-weight:800;color:#bbb">$f1c</div>
+  </div>
+
+  <div id="f2" class="clip scene" data-start="3.2" data-duration="5.4" data-track-index="1">
+    <div id="f2a" class="line big" style="top:300px;font-size:110px">$f2a</div>
+    <div id="r1" class="friend" style="top:600px"><span class="who"><i></i>$friend 1</span><span class="up">$up</span></div>
+    <div id="r2" class="friend" style="top:810px"><span class="who"><i></i>$friend 2</span><span class="up">$up</span></div>
+    <div id="r3" class="friend" style="top:1020px"><span class="who"><i></i>$friend 3</span><span class="up">$up</span></div>
+    <div id="f2b" class="line big" style="top:1300px;font-size:150px"><span class="block">$f2b</span></div>
+  </div>
+
+  <div id="f3" class="clip scene" data-start="8.6" data-duration="3.6" data-track-index="1">
+    <div id="f3flash" style="position:absolute;inset:0;background:#FFE500"></div>
+    <div id="f3a" class="line" style="top:470px;font-size:96px;font-weight:900;color:#bbb">$f3a</div>
+    <div id="f3n" class="line big" style="top:620px;font-size:420px;color:#FFE500">30</div>
+    <div id="f3b" class="line big" style="top:1060px;font-size:170px">$f3b</div>
+  </div>
+
+  <div id="f4" class="clip scene" data-start="12.2" data-duration="4" data-track-index="1">
+    <div id="f4a" class="line big" style="top:260px;font-size:120px">$f4a</div>
+    <div class="line big" style="top:400px;font-size:150px"><span id="f4b" class="block">$f4b</span></div>
+    <div id="k1" class="step" style="top:700px"><b>1</b>$k1</div>
+    <div id="k2" class="step" style="top:880px"><b>2</b>$k2</div>
+    <div id="k3" class="step" style="top:1060px"><b>3</b>$k3</div>
+    <div id="f4frame" class="frame" style="top:1260px;height:420px">
+      <img id="f4img" src="clipes.webp" style="width:1280px;height:800px;transform:translate(-90px,-120px) scale(1)">
+    </div>
+  </div>
+
+  <div id="f5" class="clip scene" data-start="16.2" data-duration="3.8" data-track-index="1">
+    <div id="f5m" class="line big" style="top:300px;font-size:120px">clipper<span style="color:#FFE500">.</span></div>
+    <div id="f5a" class="line big" style="top:520px;font-size:150px">$f5a</div>
+    <div class="line big" style="top:690px;font-size:200px"><span id="f5b" class="block">$f5b</span></div>
+    <div id="f5c" class="line" style="top:1000px;font-size:62px;font-weight:800;line-height:1.25">$f5c</div>
+    <div class="line" style="top:1250px"><span id="f5d" class="block" style="font-weight:900;font-size:64px;padding:22px 40px">$f5d</span></div>
+  </div>
+
+</div>
+<script src="gsap.min.js"></script>
+<script>
+const tl = gsap.timeline({ paused: true });
+// 1: the hook, already on screen at the first frame
+tl.fromTo('#f1a', { scale: 1.18 }, { scale: 1, duration: 0.45, ease: 'power4.out' }, 0);
+tl.fromTo('#f1b', { clipPath: 'inset(-30% 100% -10% 0)' }, { clipPath: 'inset(-30% 0% -10% 0)', duration: 0.4, ease: 'expo.out' }, 0.2);
+tl.fromTo('#f1c', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power3.out' }, 0.9);
+tl.to('#f1b', { scale: 1.08, duration: 0.15, ease: 'power2.out', yoyo: true, repeat: 1 }, 1.8);
+tl.to(['#f1a', '#f1b', '#f1c'], { y: -140, opacity: 0, duration: 0.25, ease: 'power3.in', stagger: 0.03 }, 2.95);
+// 2: each friend moves you up 100 spots
+tl.fromTo('#f2a', { x: 1100 }, { x: 0, duration: 0.4, ease: 'power4.out' }, 3.2);
+tl.fromTo(['#r1', '#r2', '#r3'], { x: -1100 }, { x: 0, duration: 0.35, ease: 'power4.out', stagger: 0.9 }, 3.7);
+tl.to(['#r1', '#r2', '#r3'], { borderColor: '#FFE500', duration: 0.15, stagger: 0.9 }, 3.95);
+tl.fromTo('#f2b', { scale: 1.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'power4.out' }, 6.6);
+tl.to('#f2b', { scale: 1.06, duration: 0.15, ease: 'power2.out', yoyo: true, repeat: 1 }, 7.4);
+tl.to(['#f2a', '#r1', '#r2', '#r3', '#f2b'], { x: -1100, duration: 0.3, ease: 'power3.in', stagger: 0.03 }, 8.25);
+// 3: bring 3, start with 30 days of Pro
+tl.fromTo('#f3flash', { opacity: 1 }, { opacity: 0, duration: 0.25, ease: 'power2.out' }, 8.6);
+tl.fromTo('#f3a', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3, ease: 'power3.out' }, 8.65);
+tl.fromTo('#f3n', { scale: 0.6 }, { scale: 1, duration: 0.5, ease: 'back.out(2)' }, 8.8);
+tl.fromTo('#f3b', { clipPath: 'inset(0 -5% 100% -5%)' }, { clipPath: 'inset(-30% -5% -10% -5%)', duration: 0.35, ease: 'expo.out' }, 9.3);
+tl.to('#f3n', { scale: 1.12, duration: 0.12, ease: 'power2.out', yoyo: true, repeat: 1 }, 10.4);
+tl.to(['#f3a', '#f3n', '#f3b'], { y: -1700, duration: 0.35, ease: 'power3.in', stagger: 0.03 }, 11.85);
+// 4: invites go out in batches, in line order
+tl.fromTo('#f4a', { y: 140, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: 'power4.out' }, 12.2);
+tl.fromTo('#f4b', { clipPath: 'inset(-30% 100% -10% 0)' }, { clipPath: 'inset(-30% 0% -10% 0)', duration: 0.4, ease: 'expo.out' }, 12.35);
+tl.fromTo(['#k1', '#k2', '#k3'], { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.3, ease: 'power3.out', stagger: 0.5 }, 12.8);
+tl.to(['#k1', '#k2', '#k3'], { borderColor: '#FFE500', duration: 0.15, stagger: 0.5 }, 13.0);
+tl.fromTo('#f4frame', { y: 300, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: 'power3.out' }, 14.2);
+tl.fromTo('#f4img', { x: -90, y: -120 }, { x: -170, y: -260, duration: 1.8, ease: 'none' }, 14.2);
+tl.to(['#f4a', '#f4b', '#k1', '#k2', '#k3', '#f4frame'], { opacity: 0, duration: 0.25, ease: 'power2.in' }, 15.95);
+// 5: the call to action, ending on a clean frame
+tl.fromTo('#f5m', { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power3.out' }, 16.2);
+tl.fromTo('#f5a', { y: 140, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: 'power4.out' }, 16.3);
+tl.fromTo('#f5b', { clipPath: 'inset(-30% 100% -10% 0)' }, { clipPath: 'inset(-30% 0% -10% 0)', duration: 0.45, ease: 'expo.out' }, 16.5);
+tl.fromTo('#f5c', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power3.out' }, 17.1);
+tl.fromTo('#f5d', { scale: 0 }, { scale: 1, duration: 0.4, ease: 'back.out(2.5)' }, 17.6);
+tl.to('#f5d', { scale: 1.06, duration: 0.18, ease: 'power2.out', yoyo: true, repeat: 3 }, 18.3);
+window.__timelines = window.__timelines || {};
+window.__timelines.main = tl;
+</script>
+</body>
+</html>
